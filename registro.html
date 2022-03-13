@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/wtf-forms.css">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/registro.css">
+
+</head>
+
+<body>
+    <a id="Regresarboton" href="./index.html"><i class="fa fa-chevron-circle-left" style="font-size:48px" id="Regresar"></i></a>
+    <a id="inversioLogo" href="index.html"><img src="img/logoPrincipalBlanco.png" id="logoPrincipal"></a>
+
+    <div class="login-content">
+        <form action="index.html">
+            <img src="img/avatar.png">
+            <h2 class="title">Únete a Inversio</h2>
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Nombre</h5>
+                    <input type="text" class="input">
+                </div>
+            </div>
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Apellidos</h5>
+                    <input type="text" class="input">
+                </div>
+            </div>
+            <div class="input-div one arribaDiv">
+                <div class="i">
+                    <i class="fas fa-birthday-cake" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Fecha de nacimiento</h5>
+                    <input type="date" class="input" name="">
+                </div>
+            </div>
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Número de teléfono</h5>
+                    <input type="number" class="input">
+                </div>
+            </div>
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Dirección</h5>
+                    <input type="text" class="input">
+                </div>
+            </div>
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Correo</h5>
+                    <input type="email" class="input" autocomplete="chrome-off">
+                </div>
+            </div>
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Contraseña</h5>
+                    <input type="password" class="input" autocomplete="new-password">
+                </div>
+            </div>
+            <div class="input-div one arribaDiv">
+                <div class="i">
+                    <i class="far fa-address-card" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Identificación oficial</h5>
+                    <label class="file">
+                        <input type="file"
+                               id="file"
+                               onchange="fileChoose(event,this)"
+                               aria-label="File browser example">
+                        <span class="file-custom"
+                              data-after="Credencial de elector"></span>
+                    </label>
+                </div>
+            </div>
+            <input type="submit" class="btn" value="Finalizar">
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="js/main.js"></script>
+
+</html>
