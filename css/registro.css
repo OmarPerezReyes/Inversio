@@ -25,7 +25,7 @@ body {
     padding: 1rem 0.75rem;
     font: 1rem/1.5 "PT Sans", Arial, sans-serif;
     color: #5a5a5a;
-    background-image: url(../img/fondoPrincipal.jpeg);
+    background-image: url(../img/fondoRegistro.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -65,7 +65,7 @@ body {
     z-index: -1;
 }
 
-.container {
+.contenedor {
     width: 100vw;
     height: 70vh;
     grid-template-columns: repeat(2, 1fr);
@@ -79,7 +79,7 @@ body {
     align-items: center;
 }
 
-.login-content {
+.contenido-login {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,17 +98,17 @@ form {
     opacity: 0.94;
 }
 
-.login-content img {
+.contenido-login img {
     height: 70px;
 }
 
-.login-content h2 {
+.contenido-login h2 {
     margin: 15px 0;
     color: white;
     font-size: 2.9rem;
 }
 
-.login-content .input-div {
+.contenido-login .input-div {
     position: relative;
     display: grid;
     grid-template-columns: 7% 93%;
@@ -117,7 +117,7 @@ form {
     border-bottom: 2px solid #d9d9d9;
 }
 
-.login-content .input-div.one {
+.contenido-login .input-div.one {
     margin-top: 0;
 }
 
@@ -268,7 +268,7 @@ a:hover {
 }
 
 @media screen and (max-width: 1050px) {
-    .container {
+    .contenedor {
         grid-gap: 2rem;
     }
 }
@@ -277,7 +277,7 @@ a:hover {
     form {
         width: 290px;
     }
-    .login-content h2 {
+    .contenido-login h2 {
         font-size: 2.4rem;
         margin: 8px 0;
     }
@@ -287,7 +287,7 @@ a:hover {
 }
 
 @media screen and (max-width: 900px) {
-    .container {
+    .contenedor {
         grid-template-columns: 1fr;
     }
     .img {
@@ -296,7 +296,7 @@ a:hover {
     .wave {
         display: none;
     }
-    .login-content {
+    .contenido-login {
         justify-content: center;
     }
     #inversioLogo {

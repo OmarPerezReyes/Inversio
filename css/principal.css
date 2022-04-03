@@ -15,7 +15,7 @@ a {
     text-decoration: none;
 }
 
-.container {
+.contenedor {
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -45,7 +45,7 @@ p {
     letter-spacing: 0.05rem;
 }
 
-.section-title {
+.seccion-titulo {
     font-size: 4rem;
     font-weight: 300;
     color: black;
@@ -55,7 +55,7 @@ p {
     text-align: center;
 }
 
-.section-title span {
+.seccion-titulo span {
     color: #3B8C6E;
 }
 
@@ -80,13 +80,13 @@ p {
     background-color: #3B8C6E;
 }
 
-.brand h1 {
+.marca h1 {
     font-size: 3rem;
     text-transform: uppercase;
     color: white;
 }
 
-.brand h1 span {
+.marca h1 span {
     color: #3B8C6E;
 }
 
@@ -242,7 +242,7 @@ p {
 /* Hero Section */
 
 #hero {
-    background-image: url(../img/inversiooo.jpg);
+    background-image: url(../img/fondoPrincipal.jpg);
     background-size: cover;
     background-position: top center;
     position: relative;
@@ -819,7 +819,7 @@ footer p:nth-child(2) {
         font-size: 2.5rem;
         padding: 20px 60px;
     }
-    h1.section-title {
+    h1.seccion-titulo {
         font-size: 5rem;
         margin-bottom: 50px;
     }
