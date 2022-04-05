@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,20 +11,19 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
-   
-  }
+}
 
-body{
+body {
     margin-left: 80px;
     margin-top: 80px;
     transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-main{
+main {
     padding: 20px;
 }
 
-header{
+header {
     width: 100%;
     height: 80px;
     background: #164773;
@@ -35,14 +33,15 @@ header{
     top: 0;
     z-index: 200;
 }
-.icon__menu h1{
+
+.icon__menu h1 {
     text-align: center;
     font-size: 50px;
     left: 1100%;
     position: absolute;
 }
 
-.icon__menu{
+.icon__menu {
     width: 50px;
     height: 100%;
     display: flex;
@@ -52,17 +51,17 @@ header{
     color: #fff;
 }
 
-.icon__menu i{
-    
+.icon__menu i {
     font-size: 20px;
     cursor: pointer;
     position: absolute;
 }
-.icon__menu img{
-    margin-left: 280%;
+
+.icon__menu img {
+    margin-left: 230%;
 }
 
-.menu__side{
+.menu__side {
     width: 80px;
     height: 100%;
     background: rgba(60, 60, 60);
@@ -78,35 +77,42 @@ header{
     transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
+
 /*Ocultar scroll para chrome, safari y opera*/
-.menu__side::-webkit-scrollbar{
+
+.menu__side::-webkit-scrollbar {
     display: none;
 }
 
+
 /*Ocultar scroll para IE, Edge y Firefox*/
-.menu__side{
+
+.menu__side {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-.support{
+.support {
     display: flex;
     flex-direction: row;
     align-items: center;
     right: 50px;
-    margin-left: 1050px;
+    margin-left: 70%;
     justify-content: flex-end;
 }
-.support i{
+
+.support i {
     color: #fff;
     font-size: 30px;
 }
-.cerrar_sesion{
-    margin:0 20px 0 20px;
+
+.cerrar_sesion {
+    margin: 0 20px 0 20px;
     font-size: 18px;
-    color:#fff;
+    color: #fff;
 }
-.name__page{
+
+.name__page {
     padding: 20px 30px;
     display: flex;
     align-items: center;
@@ -114,18 +120,18 @@ header{
     justify-content: space-between;
 }
 
-.name__page i{
+.name__page i {
     width: 20px;
     margin-right: 20px;
 }
 
-.options__menu{
+.options__menu {
     padding: 20px 30px;
     position: absolute;
     top: 80px;
 }
 
-.options__menu a{
+.options__menu a {
     color: #ffffffb2;
     cursor: default;
     display: block;
@@ -133,33 +139,33 @@ header{
     transition: color 300ms;
 }
 
-.options__menu a:hover{
+.options__menu a:hover {
     color: white;
 }
 
-.options__menu .option{
+.options__menu .option {
     padding: 20px 0px;
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.options__menu .option i{
+.options__menu .option i {
     width: 20px;
     margin-right: 20px;
     cursor: pointer;
 }
 
-.options__menu .option h4{
+.options__menu .option h4 {
     font-weight: 300;
     cursor: pointer;
 }
 
-a.selected{
+a.selected {
     color: #fff;
 }
 
-.selected:before{
+.selected:before {
     content: '';
     width: 3px;
     height: 80%;
@@ -169,7 +175,9 @@ a.selected{
     left: -30px;
 }
 
+
 /*Clases para usar en JavaScript*/
+
 .marca h1 {
     font-size: 3rem;
     text-transform: uppercase;
@@ -180,11 +188,11 @@ a.selected{
     color: #3B8C6E;
 }
 
-.body_move{
+.body_move {
     margin-left: 250px;
 }
 
-.menu__side_move{
+.menu__side_move {
     width: 250px;
 }
 
@@ -222,8 +230,8 @@ footer p:nth-child(2) {
 .social {
     display: flex;
     justify-content: center;
-    
 }
+
 .social a {
     width: 45px;
     height: 45px;
@@ -237,6 +245,7 @@ footer p:nth-child(2) {
     text-decoration: none;
     font-size: 20px;
 }
+
 .social a:hover {
     transform: scale(1.3);
     transition: .3s;
@@ -248,6 +257,7 @@ footer p:nth-child(2) {
     bottom: 35px;
     font-size: 14px;
 }
+
 .linksPie {
     color: white;
     display: inline-block;
@@ -302,9 +312,11 @@ footer p:nth-child(2) {
     font-size: 1.3rem;
     text-align: center;
 }
- /*--------------*/
 
- .Contenedores{
+
+/*--------------*/
+
+.Contenedores {
     width: 620px;
     height: 375px;
     margin: auto;
@@ -313,51 +325,55 @@ footer p:nth-child(2) {
     gap: 20px;
     grid-template-rows: repeat(2, auto);
 }
-.Contenedores div{
+
+.Contenedores div {
     padding: 5px;
-    
 }
-.tuActividad{
+
+.tuActividad {
     grid-row: span 2;
     background-color: #b6bcc0;
 }
-.dineroDisponible{
+
+.dineroDisponible {
     background-color: #b6bcc0;
 }
-.tarjetas{
+
+.tarjetas {
     background-color: #b6bcc0;
 }
-.dinero{
+
+.dinero {
     display: flex;
     justify-content: center;
 }
-.boton_personalizado{
+
+.boton_personalizado {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.boton_personalizado a{
+
+.boton_personalizado a {
     text-align: center;
 }
-@media screen and (max-width: 760px){
-    .body_move{
+
+@media screen and (max-width: 760px) {
+    .body_move {
         margin-left: 0px;
     }
-
-    .menu__side_move{
+    .menu__side_move {
         width: 80px;
         left: -80px;
     }
-    .Contenedores div{
+    .Contenedores div {
         grid-column: span 2;
     }
-    .Contenedores{
+    .Contenedores {
         width: 100%;
         height: 500px;
     }
-    .icon__menu img{
+    .icon__menu img {
         margin-left: 75%;
     }
-
-     
 }
