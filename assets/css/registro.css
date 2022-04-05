@@ -25,7 +25,7 @@ body {
     padding: 1rem 0.75rem;
     font: 1rem/1.5 "PT Sans", Arial, sans-serif;
     color: #5a5a5a;
-    background-image: url(../assets/img/fondoRegistro.jpeg);
+    background-image: url(/assets/img/fondoRegistro.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
