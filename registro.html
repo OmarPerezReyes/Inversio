@@ -20,69 +20,90 @@
         <form action="menuPrincipal.html">
             <img src="assets/img/avatar.png">
             <h2 class="title">Únete a Inversio</h2>
+           
             <div class="input-div one">
                 <div class="i">
                     <i class="fas fa-user" aria-hidden="true"></i>
                 </div>
                 <div class="div">
                     <h5>Nombre</h5>
-                    <input type="text" class="input">
+                    <input required type="text" class="input">
                 </div>
             </div>
+
             <div class="input-div one">
                 <div class="i">
                     <i class="fas fa-user" aria-hidden="true"></i>
                 </div>
                 <div class="div">
-                    <h5>Apellidos</h5>
-                    <input type="text" class="input">
+                    <h5>Apellido paterno</h5>
+                    <input required type="text" class="input">
                 </div>
             </div>
+
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Apellido materno</h5>
+                    <input required type="text" class="input">
+                </div>
+            </div>
+
             <div class="input-div one arribaDiv">
                 <div class="i">
                     <i class="fas fa-birthday-cake" aria-hidden="true"></i>
                 </div>
                 <div class="div">
                     <h5>Fecha de nacimiento</h5>
-                    <input type="date" class="input" name="">
+                    <input required type="date" class="input" name="">
                 </div>
             </div>
+
             <div class="input-div one">
                 <div class="i">
                     <i class="fas fa-mobile-alt" aria-hidden="true"></i>
                 </div>
                 <div class="div">
                     <h5>Número de teléfono</h5>
-                    <input type="number" class="input">
+                    <!--BUSCAR LIMITAR EL TELEFONO-->
+                    <input required type="number" class="input">
+                    <!-- <input type="number" id="tentacles" name="tentacles" min="10" max="100"> -->
+                    <!-- <input name=numero type=text maxlength=7> -->
                 </div>
             </div>
+
             <div class="input-div one">
                 <div class="i">
                     <i class="fas fa-home" aria-hidden="true"></i>
                 </div>
                 <div class="div">
-                    <h5>Dirección</h5>
-                    <input type="text" class="input">
+                    <h5>CURP</h5>
+                    <input required type="text" class="input" maxlength=18>
                 </div>
             </div>
+
             <div class="input-div one">
                 <div class="i">
                     <i class="fas fa-envelope" aria-hidden="true"></i>
                 </div>
                 <div class="div">
                     <h5>Correo</h5>
-                    <input type="email" class="input" autocomplete="chrome-off">
+                    <input required type="email" class="input" autocomplete="chrome-off">
                 </div>
             </div>
+
             <div class="input-div pass">
                 <div class="i">
                     <i class="fas fa-lock" aria-hidden="true"></i>
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input type="password" class="input" autocomplete="new-password">
+                    <input required type="password" class="input" autocomplete="new-password">
                 </div>
             </div>
+
             <div class="input-div one arribaDiv">
                 <div class="i">
                     <i class="far fa-address-card" aria-hidden="true"></i>
@@ -99,7 +120,8 @@
                     </label>
                 </div>
             </div>
-            <input type="submit" class="btn" value="Finalizar">
+            <input required type="submit" class="btn" value="Finalizar">
+            <!--<button onClick="location.href="> LLévame a otro lado </button>-->
         </form>
     </div>
 </body>
