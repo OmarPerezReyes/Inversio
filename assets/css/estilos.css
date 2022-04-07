@@ -110,8 +110,8 @@ header a{
     margin:0 20px 0 20px;
     font-size: 18px;
     color:#fff;
-    margin-left: 530px;
     cursor: pointer;
+    transform: translateX(15px);
 }
 .name__page{
     padding: 20px 30px;
@@ -133,6 +133,7 @@ header a{
     padding: 20px 30px;
     position: absolute;
     top: 80px;
+    cursor: pointer;
 }
 
 .options__menu a{

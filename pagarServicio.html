@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú lateral responsive - MagtimusPro</title>
+    <title>Pagar Servicio</title>
 
     <link rel="stylesheet" href="assets/css/estilos.css">
     <link rel="stylesheet" href="assets/css/fontello.css">
@@ -16,55 +16,65 @@
     <header>
         <div class="icon__menu">
             <i class="fas fa-bars" id="btn_open"></i>
-            <img src="assets/img/logoPrincipalBlanco.png" width="200" height="50" > 
         </div>
+
+        <a href="menuPrincipal.html"> <img src="assets/img/logoPrincipalBlanco.png" width="200" height="50"/></a>
+
+        <div class="support">
+            <a href="soporte.html"> <img src= "assets/img/supportCliente.png"></img></a>
+        </div>
+        <a href="iniciarSesion.html">
+            <div class="cerrar_sesion">
+                <p>Cerrar sesión</p>
+            </div>
+        </a>
     </header>
 
     <div class="menu__side" id="menu_side">
 
         <div class="name__page">
-            <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg">
+            <a href="miPerfil.html"><img src= "https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg"/></a>
             <h4>Usuario</h4>
         </div>
 
         <div class="options__menu">	
 
-            <a href="#">
+            <a href="menuPrincipal.html">
                 <div class="option">
                     <i class="fas fa-home" title="Inicio"></i>
                     <h4>Inicio</h4>
                 </div>
             </a>
 
-            <a href="#">
+            <a href="miPerfil.html">
                 <div class="option">
                     <i class="icon-user-circle" title="Mi Perfil"></i>
                     <h4>Mi Perfil</h4>
                 </div>
             </a>
             
-            <a href="#">
+            <a href="transferir.html">
                 <div class="option">
                     <i class="icon-credit-card" title="Transferir"></i>
                     <h4>Transferir</h4>
                 </div>
             </a>
 
-            <a href="#">
+            <a href="retiro.html">
                 <div class="option">
                     <i class="icon-money" title="Retiro"></i>
                     <h4>Retiro</h4>
                 </div>
             </a>
 
-            <a href="#" class="selected">
+            <a href="pagarServicio.html" class="selected">
                 <div class="option">
                     <i class="icon-doc" title="Pagar servicio"></i>
                     <h4>Pagar servicio</h4>
                 </div>
             </a>
 
-            <a href="#">
+            <a href="suActividad.html">
                 <div class="option">
                     <i class="icon-chart-line-1" title="Su actividad"></i>
                     <h4>Su actividad</h4>
@@ -79,19 +89,36 @@
         <div class="Contenedores">
             
             <div class="dineroDisponible">
-                Dinero disponible:
-
-                <a class="boton_personalizado" href="">Soy un botón</a>
-              
-
+                <p>Dinero disponible:</p>
+                <div class="dinero">
+                    <p>$1,000,000</p><i class="fa-solid fa-eye"></i>
+                </div>
+                <p>Detalles de cuenta:</p>
+                <div class="boton_personalizado">
+                    <a href="">Soy un botón</a>
+                    <a href="">Soy otro boton</a>
+                </div>
             </div>
-            <div class="tarjetas">
-                Mis tarjetas
+        <div class="tuActividad">
+            <div class="dineroDisponible">
+                <p>Dinero disponible:</p>
+                <div class="dinero">
+                    <p>$1,000,000</p><i class="fa-solid fa-eye"></i>
+                </div>
+                <p>Detalles de cuenta:</p>
+                <div class="boton_personalizado">
+                    <a href="">Soy un botón</a>
+                    <a href="">Soy otro boton</a>
+                </div>
             </div>
-            <div class="tuActividad">
-                Tu actividad reciente
+        </div>
+        <div class="tarjetas">
+            <p>Mis tarjetas:</p>
+            <div>
+                <img src="" alt="tarjeta">
             </div>
-    </div>
+        </div>
+</div>
     </main>
     <section id="footer">
         <div class="footer contenedor">
@@ -113,6 +140,6 @@
             <p>Copyright 2022 © Los productos y ofertas de INVERSIO están dirigidos sólo a residentes de México</p>
         </div>
     </section>
-    <script src="js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú</title>
+    <title>Retiro</title>
 
     <link rel="stylesheet" href="assets/css/estilos.css">
     <link rel="stylesheet" href="assets/css/fontello.css">
@@ -23,7 +23,11 @@
         <div class="support">
             <a href="soporte.html"> <img src= "assets/img/supportCliente.png"></img></a>
         </div>
-        <p class="cerrar_sesion">Cerrar sesion</p>
+        <a href="iniciarSesion.html">
+            <div class="cerrar_sesion">
+                <p>Cerrar sesión</p>
+            </div>
+        </a>
     </header>
 
     <div class="menu__side" id="menu_side">
@@ -35,42 +39,42 @@
 
         <div class="options__menu">	
 
-            <a href="#">
+            <a href="menuPrincipal.html">
                 <div class="option">
                     <i class="fas fa-home" title="Inicio"></i>
                     <h4>Inicio</h4>
                 </div>
             </a>
 
-            <a href="#">
+            <a href="miPerfil.html">
                 <div class="option">
                     <i class="icon-user-circle" title="Mi Perfil"></i>
                     <h4>Mi Perfil</h4>
                 </div>
             </a>
             
-            <a href="#">
+            <a href="transferir.html">
                 <div class="option">
                     <i class="icon-credit-card" title="Transferir"></i>
                     <h4>Transferir</h4>
                 </div>
             </a>
 
-            <a href="#" class="selected">
+            <a href="retiro.html" class="selected">
                 <div class="option">
                     <i class="icon-money" title="Retiro"></i>
                     <h4>Retiro</h4>
                 </div>
             </a>
 
-            <a href="#">
+            <a href="pagarServicio.html">
                 <div class="option">
                     <i class="icon-doc" title="Pagar servicio"></i>
                     <h4>Pagar servicio</h4>
                 </div>
             </a>
 
-            <a href="#">
+            <a href="suActividad.html">
                 <div class="option">
                     <i class="icon-chart-line-1" title="Su actividad"></i>
                     <h4>Su actividad</h4>
@@ -78,44 +82,48 @@
             </a>
 
         </div>
+
     </div>
-    <div class="retiro1">
-        <div class="retiroConTarjeta">
-            <form action="" method="post">
-                <h3>Retiro</h3>
-                <p>BENEFICIARIO</p>
-                <input type="text" name="" id="" class="ingreso">
-                <p>CLABE</p>
-                <input type="text" name="" id="" class="ingreso">
-                <p>IMPORTE</p>
-                <div class="importe_cuenta">
-                    <p>$</p><input type="number" name="" id="" class="ingreso">
-                </div>
-                <p>CONCEPTO</p>
-                <input type="text" name="" id="" class="concepto">
-                <input type="submit" value="Continuar" class="btnContinuarRetiro">
-            </form>
+
+    <main>
+        <div class="retiro1">
+            <div class="retiroConTarjeta">
+                <form action="" method="post">
+                    <h3>Retiro</h3>
+                    <p>BENEFICIARIO</p>
+                    <input type="text" name="" id="" class="ingreso">
+                    <p>CLABE</p>
+                    <input type="text" name="" id="" class="ingreso">
+                    <p>IMPORTE</p>
+                    <div class="importe_cuenta">
+                        <p>$</p><input type="number" name="" id="" class="ingreso">
+                    </div>
+                    <p>CONCEPTO</p>
+                    <input type="text" name="" id="" class="concepto">
+                    <input type="submit" value="Continuar" class="btnContinuarRetiro">
+                </form>
+            </div>
+            <div class="retiroSinTarjeta">
+                <form action="" method="post">
+                    <h3>Retiro sin tarjeta:</h3>
+                    <p>CUENTA DE RETIRO</p>
+                    <!-- <input type="text" name="" id=""> -->
+                    <div class="importe_cuenta">
+                        <p>1234512345</p>
+                        <p>$3,000</p>
+                    </div>
+                    <p>IMPORTE</p>
+                    <div class="importe_cuenta">
+                        <p>$</p><input type="text" name="" id="" class="ingreso">
+                    </div>
+                    
+                    <p>CONCEPTO</p>
+                    <input type="text" name="" id="" class="concepto">
+                    <input type="submit" value="Continuar" class="btnContinuarRetiro">
+                </form>
+            </div>
         </div>
-        <div class="retiroSinTarjeta">
-            <form action="" method="post">
-                <h3>Retiro sin tarjeta:</h3>
-                <p>CUENTA DE RETIRO</p>
-                <!-- <input type="text" name="" id=""> -->
-                <div class="importe_cuenta">
-                    <p>1234512345</p>
-                    <p>$3,000</p>
-                </div>
-                <p>IMPORTE</p>
-                <div class="importe_cuenta">
-                    <p>$</p><input type="text" name="" id="" class="ingreso">
-                </div>
-                
-                <p>CONCEPTO</p>
-                <input type="text" name="" id="" class="concepto">
-                <input type="submit" value="Continuar" class="btnContinuarRetiro">
-            </form>
-        </div>
-    </div>
+    </main>
     <section id="footer">
         <div class="footer contenedor">
             <div class="marca">
@@ -136,6 +144,6 @@
             <p>Copyright 2022 © Los productos y ofertas de INVERSIO están dirigidos sólo a residentes de México</p>
         </div>
     </section>
-    <script src="js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
