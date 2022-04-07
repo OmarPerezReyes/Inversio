@@ -25,7 +25,7 @@ body {
     padding: 1rem 0.75rem;
     font: 1rem/1.5 "PT Sans", Arial, sans-serif;
     color: #5a5a5a;
-    background-image: url(/assets/img/fondoRegistro.jpeg);
+    background-image: url('../img/fondoRegistro.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -120,11 +120,14 @@ form {
 .contenido-login .input-div.one {
     margin-top: 0;
 }
+
+
 /* .input-div.one{
     display: flex;
     flex-direction: row;
     justify-content: center;
 } */
+
 .i {
     color: white;
     display: flex;
@@ -211,7 +214,8 @@ input::-webkit-calendar-picker-indicator {
     color: white;
     font-family: 'poppins', sans-serif;
 }
-.caja{
+
+.caja {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -221,6 +225,7 @@ input::-webkit-calendar-picker-indicator {
     font-family: 'poppins', sans-serif;
     position: relative;
 }
+
 .input-div.pass {
     margin-bottom: 4px;
 }
