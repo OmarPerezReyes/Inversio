@@ -12,14 +12,9 @@
 
 <body>
     <img class="wave" src="">
-    <a id="Regresarboton" href="./iniciarSesion.html"><i class="fa fa-chevron-circle-left" style="font-size:48px" id="Regresar"></i></a>
-    <a id="inversioLogo" href="index.html"><img src="assets/img/logoPrincipal.jpeg" id="logoPrincipal"></a>
-    
+    <div><a id="Regresarboton" href="./iniciarSesion.html"><i class="fa fa-chevron-circle-left" style="font-size:48px" id="Regresar"></i></a>
+        <a id="inversioLogo" href="index.html"><img src="assets/img/logoPrincipalBlanco.png" id="logoPrincipal"></a></div>
     <div class="container">
-        <div class="img">
-            <img src="./assets/img/izqIniciarSesion.png">
-        </div>
-
         <div class="login-content">
             <form action="iniciarSesion.html">
                 <img src="assets/img/avatar.png">
@@ -40,7 +35,8 @@
                     </div>
                     <div class="div">
                         <h5>Contraseña nueva</h5>
-                        <input required type="password" id="pass1" class="input" autocomplete="new-password" alt="strongPass" >
+                        <input required type="password" id="pass1" class="input" autocomplete="new-password" alt="strongPass" maxlength="8" pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra mayúscula o minúscula. La contraseña debe empezar con una letra y contener al menor un dígito" required>
+
                     </div>
                 </div>
                 
@@ -50,7 +46,7 @@
                     </div>
                     <div class="div">
                         <h5>Confirmar contraseña nueva</h5>
-                        <input required type="password" id="pass2" class="input" autocomplete="new-password" alt="strongPass">
+                        <input required type="password" id="pass2" class="input" autocomplete="new-password" alt="strongPass" maxlength="8">
                     </div>
                 </div>
                 

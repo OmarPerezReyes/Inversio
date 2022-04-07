@@ -78,7 +78,7 @@
                 <div class="div">
                     <h5>Número de teléfono</h5>
                     <!--BUSCAR LIMITAR EL TELEFONO-->
-                    <input required type="number" class="input">
+                    <input required type="number" class="input" onkeydown="if(this.value.length == 10) return false;" >
                     <!-- <input type="number" id="tentacles" name="tentacles" min="10" max="100"> -->
                     <!-- <input name=numero type=text maxlength=7> -->
                 </div>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input required type="password" class="input" autocomplete="new-password">
+                    <input required type="password" class="input" autocomplete="new-password" maxlength=8 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra mayúscula o minúscula. La contraseña debe empezar con una letra y contener al menor un dígito" required>>
                 </div>
             </div>
 
@@ -131,16 +131,8 @@
                 </div>
             </div>
 
-            <div class="input-div one">
-                <div class="div">
-                    <div class="i">
-                        <input required type="checkbox" name="cbox12" magin-right: 10px> Acepto términos
-                    </div>
-                    <!--
-                        <label><input type="checkbox" id="cbox1" value="first_checkbox" magin-right: 10px>Este es mi primer checkbox</label>
-                        <h5> Acepto términos y condiciones</h5>
-                    -->
-                </div>
+            <div class="caja">
+                  <label><input required type="checkbox" name="cbox12"> Acepto términos y condiciones</label>
             </div>
                 <input required type="submit" class="btn" value="Finalizar">
         </form>

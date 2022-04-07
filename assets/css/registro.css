@@ -120,7 +120,11 @@ form {
 .contenido-login .input-div.one {
     margin-top: 0;
 }
-
+/* .input-div.one{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} */
 .i {
     color: white;
     display: flex;
@@ -207,7 +211,16 @@ input::-webkit-calendar-picker-indicator {
     color: white;
     font-family: 'poppins', sans-serif;
 }
-
+.caja{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: white;
+    font-family: 'poppins', sans-serif;
+    position: relative;
+}
 .input-div.pass {
     margin-bottom: 4px;
 }

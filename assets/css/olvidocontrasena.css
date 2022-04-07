@@ -24,10 +24,6 @@ body {
 .container {
     width: 100vw;
     height: 70vh;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 4rem;
-    padding: 0 2rem;
 }
 
 .img {
@@ -240,7 +236,7 @@ a:hover {
         justify-content: center;
     }
     #logoPrincipal {
-        display: inline;
+        display:flex;
         width: 12em;
     }
     #inversioLogo {
