@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
-* {
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,19 +12,20 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
-}
+   
+  }
 
-body {
+body{
     margin-left: 80px;
     margin-top: 80px;
     transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-main {
+main{
     padding: 20px;
 }
 
-header {
+header{
     width: 100%;
     height: 80px;
     background: #164773;
@@ -33,15 +35,19 @@ header {
     top: 0;
     z-index: 200;
 }
-
-.icon__menu h1 {
+header a{
+    position: relative;
+    left: 480px;
+    cursor: pointer;
+}
+.icon__menu h1{
     text-align: center;
     font-size: 50px;
     left: 1100%;
     position: absolute;
 }
 
-.icon__menu {
+.icon__menu{
     width: 50px;
     height: 100%;
     display: flex;
@@ -51,17 +57,14 @@ header {
     color: #fff;
 }
 
-.icon__menu i {
+.icon__menu i{
+    margin-left: 20px;
     font-size: 20px;
     cursor: pointer;
     position: absolute;
 }
 
-.icon__menu img {
-    margin-left: 230%;
-}
-
-.menu__side {
+.menu__side{
     width: 80px;
     height: 100%;
     background: rgba(60, 60, 60);
@@ -77,42 +80,40 @@ header {
     transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-
 /*Ocultar scroll para chrome, safari y opera*/
-
-.menu__side::-webkit-scrollbar {
+.menu__side::-webkit-scrollbar{
     display: none;
 }
 
-
 /*Ocultar scroll para IE, Edge y Firefox*/
-
-.menu__side {
+.menu__side{
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-.support {
+.support{
     display: flex;
     flex-direction: row;
     align-items: center;
     right: 50px;
-    margin-left: 70%;
+    margin-left: 150px;
     justify-content: flex-end;
+    cursor: pointer;
 }
-
-.support i {
+.support img{
     color: #fff;
-    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    margin-left: 20%;
 }
-
-.cerrar_sesion {
-    margin: 0 20px 0 20px;
+.cerrar_sesion{
+    margin:0 20px 0 20px;
     font-size: 18px;
-    color: #fff;
+    color:#fff;
+    margin-left: 530px;
+    cursor: pointer;
 }
-
-.name__page {
+.name__page{
     padding: 20px 30px;
     display: flex;
     align-items: center;
@@ -120,18 +121,21 @@ header {
     justify-content: space-between;
 }
 
-.name__page i {
+.name__page h4{
+    margin-right: 30px;
+}
+.name__page i{
     width: 20px;
     margin-right: 20px;
 }
 
-.options__menu {
+.options__menu{
     padding: 20px 30px;
     position: absolute;
     top: 80px;
 }
 
-.options__menu a {
+.options__menu a{
     color: #ffffffb2;
     cursor: default;
     display: block;
@@ -139,33 +143,33 @@ header {
     transition: color 300ms;
 }
 
-.options__menu a:hover {
+.options__menu a:hover{
     color: white;
 }
 
-.options__menu .option {
+.options__menu .option{
     padding: 20px 0px;
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.options__menu .option i {
+.options__menu .option i{
     width: 20px;
     margin-right: 20px;
     cursor: pointer;
 }
 
-.options__menu .option h4 {
+.options__menu .option h4{
     font-weight: 300;
     cursor: pointer;
 }
 
-a.selected {
+a.selected{
     color: #fff;
 }
 
-.selected:before {
+.selected:before{
     content: '';
     width: 3px;
     height: 80%;
@@ -175,9 +179,7 @@ a.selected {
     left: -30px;
 }
 
-
 /*Clases para usar en JavaScript*/
-
 .marca h1 {
     font-size: 3rem;
     text-transform: uppercase;
@@ -188,11 +190,11 @@ a.selected {
     color: #3B8C6E;
 }
 
-.body_move {
+.body_move{
     margin-left: 250px;
 }
 
-.menu__side_move {
+.menu__side_move{
     width: 250px;
 }
 
@@ -201,51 +203,26 @@ a.selected {
     align-items: center;
 }
 
-footer {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    background: #101010;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
-footer p:nth-child(1) {
-    font-size: 30px;
-    color: white;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-footer p:nth-child(2) {
-    color: white;
-    font-size: 17px;
-    width: 500px;
-    text-align: center;
-    line-height: 26px;
-}
 
 .social {
     display: flex;
     justify-content: center;
+    
 }
-
 .social a {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #3B8C6E;
     border-radius: 50%;
-    margin: 22px 10px;
+    margin: 5px 5px;
     color: white;
     text-decoration: none;
     font-size: 20px;
 }
-
 .social a:hover {
     transform: scale(1.3);
     transition: .3s;
@@ -257,11 +234,10 @@ footer p:nth-child(2) {
     bottom: 35px;
     font-size: 14px;
 }
-
 .linksPie {
     color: white;
     display: inline-block;
-    font-size: 13px;
+    font-size: 15px;  /*Mueve el aviso legal------*/
     margin-right: 5px;
     margin-bottom: 15px;
 }
@@ -274,18 +250,22 @@ footer p:nth-child(2) {
     min-height: 200px;
     flex-direction: column;
     padding-top: 50px;
-    padding-bottom: 10px;
+    padding-bottom: 60px;
 }
 
 #footer h2 {
     color: white;
     font-weight: 500;
-    font-size: 1.8rem;
+    font-size: 15px;
     letter-spacing: 0.1rem;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
 }
+#footer h1 {
+    font-size: 20px;
+}
+
 
 #footer .social-icon {
     display: flex;
@@ -309,71 +289,145 @@ footer p:nth-child(2) {
 
 #footer p {
     color: white;
-    font-size: 1.3rem;
+    font-size: 15px;
     text-align: center;
 }
+ /*--------------*/
 
-
-/*--------------*/
-
-.Contenedores {
-    width: 620px;
-    height: 375px;
+.Contenedores{
+    width: 1000px;
+    height: 500px;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     grid-template-rows: repeat(2, auto);
 }
-
-.Contenedores div {
+.Contenedores div{
     padding: 5px;
+    
 }
-
-.tuActividad {
+.tuActividad{
     grid-row: span 2;
+}
+.dineroDisponible, .tarjetas, .tuActividad,.retiro{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #b6bcc0;
 }
-
-.dineroDisponible {
+/*Retiro*/
+.retiro1{
+    width: 60%;
+    margin: auto;
+    height: 100%;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    display: grid;
+    gap: 70px;
+    grid-template-columns: 1fr 1fr;
+}
+.transferir{
+    width: 80%;
+    margin: auto;
+    height: 100%;
+    margin-bottom: 50px;
+    margin-left: 290px;
+}
+.retiroSinTarjeta p, .retiroConTarjeta p{
+    padding: 5px 0 5px 0;
+}
+.ingreso, .concepto{
+    outline: 0;
+    border: none;
+}
+.ingreso{
+   border-bottom: 1px solid #000;
+   background-color: #b6bcc0;
+   width: 100%;
+}
+.concepto{
+    border-radius: 6px;
+    position: relative;
+    margin: 0 0 25px 0;
+    height: 50px;
+}
+.btnContinuarRetiro{
+    width: 35%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px;
+    color: #fff;
+    background-color: #6A747D;
+    border: none;
+    outline: none;
+    
+}
+.retiroConTarjeta form, .retiroSinTarjeta form{
     background-color: #b6bcc0;
+    padding: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.retiroConTarjeta form h3, .retiroSinTarjeta form h3{
+    text-align: center;
+    margin-bottom: 15px;
+}
+.importe_cuenta{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.importe_cuenta p{
+    margin-right: 5px;
+    font-size: 20px;
 }
 
-.tarjetas {
-    background-color: #b6bcc0;
-}
-
-.dinero {
+.dinero{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-
-.boton_personalizado {
+.dinero i{
+    margin-left: 5px;
+}
+.boton_personalizado{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-
-.boton_personalizado a {
+.boton_personalizado a{
     text-align: center;
+    color: #fff;
 }
 
-@media screen and (max-width: 760px) {
-    .body_move {
+@media screen and (max-width: 760px){
+    .body_move{
         margin-left: 0px;
     }
-    .menu__side_move {
+
+    .menu__side_move{
         width: 80px;
         left: -80px;
     }
-    .Contenedores div {
+    .Contenedores div{
         grid-column: span 2;
     }
-    .Contenedores {
+    .Contenedores{
         width: 100%;
         height: 500px;
     }
-    .icon__menu img {
-        margin-left: 75%;
+    header a{
+        left: 90px;
     }
+    .retiro1{
+        width: 100%;
+    }
+    .retiroSinTarjeta, .retiroConTarjeta{
+        grid-column: span 2;
+    }
+    
+     
 }
