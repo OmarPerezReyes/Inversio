@@ -15,12 +15,22 @@
 <body>
     <a id="Regresarboton" href="./index.html"><i class="fa fa-chevron-circle-left" style="font-size:48px" id="Regresar"></i></a>
     <a id="inversioLogo" href="index.html"><img src="assets/img/logoPrincipalBlanco.png" id="logoPrincipal"></a>
-
+    
     <div class="contenido-login">
-        <form action="menuPrincipal.html">
+        <form action="iniciarSesion.html">
             <img src="assets/img/avatar.png">
             <h2 class="title">Únete a Inversio</h2>
            
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Usuario</h5>
+                    <input required type="text" class="input">
+                </div>
+            </div>
+            
             <div class="input-div one">
                 <div class="i">
                     <i class="fas fa-user" aria-hidden="true"></i>
@@ -120,8 +130,19 @@
                     </label>
                 </div>
             </div>
-            <input required type="submit" class="btn" value="Finalizar">
-            <!--<button onClick="location.href="> LLévame a otro lado </button>-->
+
+            <div class="input-div one">
+                <div class="div">
+                    <div class="i">
+                        <input required type="checkbox" name="cbox12" magin-right: 10px> Acepto términos
+                    </div>
+                    <!--
+                        <label><input type="checkbox" id="cbox1" value="first_checkbox" magin-right: 10px>Este es mi primer checkbox</label>
+                        <h5> Acepto términos y condiciones</h5>
+                    -->
+                </div>
+            </div>
+                <input required type="submit" class="btn" value="Finalizar">
         </form>
     </div>
 </body>
