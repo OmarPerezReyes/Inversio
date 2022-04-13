@@ -1,3 +1,34 @@
+<?php
+session_start();
+
+session_unset();
+
+session_destroy();
+if (isset($_SESSION['user_id'])) {
+    header('Location: /menuPrincipal.html');
+}
+
+require 'controllers/conexion.php';
+if (!empty($_POST['usuario']) && !empty($_POST['pass'])) {
+    $usuario = $_POST['usuario'];
+    $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+    $actualizar = "UPDATE cliente SET pass='$pass' WHERE usuario='$usuario'";
+    $ejecutar = mysqli_query($conexion, $actualizar);
+    if ($ejecutar) {
+        echo '
+            <script>
+            window.location = "iniciarSesion.php"
+            </script>';
+    } else {
+        echo '
+            <script>
+            alert("No se pudo realizar la acción. Intente nuevamente.");
+            window.location = "olvidoContrasena.html"
+            </script>';
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,11 +43,11 @@
 
 <body>
     <img class="wave" src="">
-    <div><a id="Regresarboton" href="./iniciarSesion.html"><i class="fa fa-chevron-circle-left" style="font-size:48px" id="Regresar"></i></a>
+    <div><a id="Regresarboton" href="iniciarSesion.php"><i class="fa fa-chevron-circle-left" style="font-size:48px" id="Regresar"></i></a>
         <!-- <a id="inversioLogo" href="index.html"><img src="assets/img/logoPrincipalBlanco.png" id="logoPrincipal"></a></div> -->
         <div class="container">
             <div class="login-content">
-                <form action="iniciarSesion.html">
+                <form action="olvidoContrasena.php" method="POST">
                     <img src="assets/img/avatar.png">
                     <h2 class="title">Cambiar contraseña</h2>
                     <div class="input-div one">
@@ -24,8 +55,8 @@
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="div">
-                            <h5>Correo</h5>
-                            <input required type="email" class="input" autocomplete="chrome-off">
+                            <h5>Usuario</h5>
+                            <input required type="text" class="input" name="usuario" autocomplete="chrome-off">
                         </div>
                     </div>
 
@@ -35,22 +66,20 @@
                         </div>
                         <div class="div">
                             <h5>Contraseña nueva</h5>
-                            <input required type="password" id="pass1" class="input" autocomplete="new-password" alt="strongPass" maxlength="8" pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra mayúscula o minúscula. La contraseña debe empezar con una letra y contener al menor un dígito"
-                                required>
+                            <input required type="password" id="pass1" name="pass" class="input" autocomplete="new-password" alt="strongPass" maxlength="8" pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra mayúscula o minúscula. La contraseña debe empezar con una letra y contener al menor un dígito" required>
 
                         </div>
                     </div>
 
-                    <div class="input-div pass">
+                    <!--             <div class="input-div pass">
                         <div class="i">
                             <i class="fas fa-lock"></i>
                         </div>
                         <div class="div">
                             <h5>Confirmar contraseña</h5>
-                            <input required type="password" id="pass2" class="input" autocomplete="new-password" alt="strongPass" maxlength="8">
+                            <input required type="password" id="pass2" name="pass" class="input" autocomplete="new-password" alt="strongPass" maxlength="8">
                         </div>
-                    </div>
-
+                    </div>  -->
                     <input type="submit" class="btn" value="Cambiar">
                 </form>
             </div>

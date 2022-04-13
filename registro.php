@@ -24,7 +24,6 @@ if (
     $stmt->bindParam(':correo', $_POST['correo']);
     $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
     $stmt->bindParam(':pass', $pass);
-    echo $_POST['pass'];
     if ($_FILES['identificacionOficial']['error'] > 0) {
         echo '
         <script>

@@ -16,7 +16,6 @@ session_destroy();
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
         $message = '';
-    echo $results['pass'];
     if (count($results) > 0 && password_verify($_POST['pass'], $results['pass'])) {
       $_SESSION['user_id'] = $results['id_cliente'];
       header("Location: menuPrincipal.html");
@@ -70,7 +69,7 @@ session_destroy();
                         <input required type="password" name="pass" class="input" autocomplete="new-password">
                     </div>
                 </div>
-                <a href="./olvidocontrasena.html">¿Olvidaste tu contraseña?</a>
+                <a href="olvidoContrasena.php">¿Olvidaste tu contraseña?</a>
                 <input type="submit" class="btn" value="Iniciar sesión">
             </form>
         </div>
