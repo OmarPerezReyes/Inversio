@@ -203,7 +203,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input required type="password" name="pass" class="input" minlength="8" maxlength=15 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required>
+                    <input required type="password" name="pass" class="input" autocomplete="new-password" minlength="8" maxlength=15 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required>
                 </div>
             </div>
             <div class="input-div pass">
