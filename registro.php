@@ -121,6 +121,7 @@ if (
                 <div class="div">
                     <h5>Usuario</h5>
                     <input required type="text" name="usuario" class="input" autocomplete="nope" pattern="[A-Za-z0-9]{4,15}" title="Considere ">
+                    <input required type="text" name="usuario" class="input" pattern="^[a-zA-Z]+$" title="El usuario no debe contener acentos, números ni espacios en blanco" autocomplete="nope" >
                 </div>
             </div>
 
@@ -130,7 +131,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Nombre</h5>
-                    <input required type="text" name="nombre" class="input" autocomplete="nope">
+                    <input required type="text" name="nombre" class="input" autocomplete="nope" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" title="El nombre no puede contener carácteres especiales o números" title="revisa">
                 </div>
             </div>
 
@@ -140,7 +141,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Apellido paterno</h5>
-                    <input required type="text" name="apellidoPaterno" class="input" autocomplete="nope">
+                    <input required type="text" name="apellidoPaterno" class="input" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="El apellido no debe contener carácteres especiales o números" autocomplete="nope">
                 </div>
             </div>
 
@@ -150,7 +151,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Apellido materno</h5>
-                    <input required type="text" name="apellidoMaterno" class="input" autocomplete="nope">
+                    <input required type="text" name="apellidoMaterno" class="input" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="El apellido no debe contener carácteres especiales o números" autocomplete="nope">
                 </div>
             </div>
 
@@ -172,6 +173,7 @@ if (
                     <h5>Número de teléfono</h5>
                     <!--BUSCAR LIMITAR EL TELEFONO-->
                     <input required type="number" name="numeroTelefono" class="input" maxlength="10" oninput="maxlengthNumber(this);" autocomplete="nope">
+                    <input required type="number" name="numeroTelefono" class="input" pattern="[0-9]{9}" title="El número telefónico debe ser de 10 digitos" autocomplete="nope">
                     <!-- <input type="number" id="tentacles" name="tentacles" min="10" max="100"> -->
                     <!-- <input name=numero type=text maxlength=7> -->
                 </div>
