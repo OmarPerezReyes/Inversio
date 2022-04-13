@@ -24,6 +24,7 @@ if (
     $stmt->bindParam(':correo', $_POST['correo']);
     $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
     $stmt->bindParam(':pass', $pass);
+    echo $_POST['pass'];
     if ($_FILES['identificacionOficial']['error'] > 0) {
         echo '
         <script>
@@ -119,7 +120,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Usuario</h5>
-                    <input required type="text" name="usuario" class="input">
+                    <input required type="text" name="usuario" class="input" autocomplete="nope" pattern:"[a-zA-Z0-9\_\-]{4,16}">
                 </div>
             </div>
 
@@ -129,7 +130,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Nombre</h5>
-                    <input required type="text" name="nombre" class="input">
+                    <input required type="text" name="nombre" class="input" autocomplete="nope">
                 </div>
             </div>
 
@@ -139,7 +140,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Apellido paterno</h5>
-                    <input required type="text" name="apellidoPaterno" class="input">
+                    <input required type="text" name="apellidoPaterno" class="input" autocomplete="nope">
                 </div>
             </div>
 
@@ -149,7 +150,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Apellido materno</h5>
-                    <input required type="text" name="apellidoMaterno" class="input">
+                    <input required type="text" name="apellidoMaterno" class="input" autocomplete="nope">
                 </div>
             </div>
 
@@ -159,7 +160,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Fecha de nacimiento</h5>
-                    <input required type="date" name="fechaNacimiento" class="input" name="">
+                    <input required type="date" name="fechaNacimiento" class="input" name=""  min="1925-01-01" max="2004-12-31">
                 </div>
             </div>
 
@@ -170,7 +171,7 @@ if (
                 <div class="div">
                     <h5>Número de teléfono</h5>
                     <!--BUSCAR LIMITAR EL TELEFONO-->
-                    <input required type="number" name="numeroTelefono" class="input" onkeydown="if(this.value.length == 10) return false;">
+                    <input required type="number" name="numeroTelefono" class="input" onkeydown="if(this.value.length == 10) return false;" autocomplete="nope">
                     <!-- <input type="number" id="tentacles" name="tentacles" min="10" max="100"> -->
                     <!-- <input name=numero type=text maxlength=7> -->
                 </div>
@@ -182,7 +183,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>CURP</h5>
-                    <input required type="text" name="curp" class="input" maxlength=18>
+                    <input required type="text" name="curp" class="input" maxlength=18 autocomplete="nope">
                 </div>
             </div>
 
@@ -192,7 +193,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Correo</h5>
-                    <input required type="email" name="correo" class="input" autocomplete="chrome-off">
+                    <input required type="email" name="correo" class="input" autocomplete="chrome-off" autocomplete="nope">
                 </div>
             </div>
 
@@ -202,10 +203,18 @@ if (
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input required type="password" name="pass" class="input" autocomplete="new-password" maxlength=8 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra mayúscula o minúscula. La contraseña debe empezar con una letra y contener al menor un dígito" required>
+                    <input required type="password" name="pass" class="input" autocomplete="new-password" minlength="8" maxlength=15 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required autocomplete="nope">
                 </div>
             </div>
-
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                </div>
+                <div class="div">
+                    <h5>Confirmar contraseña</h5>
+                    <input required type="password" name="pass_dos" class="input" autocomplete="new-password" minlength="8" maxlength=15 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required autocomplete="nope">
+                </div>
+            </div>
             <div class="input-div one arribaDiv">
                 <div class="i">
                     <i class="far fa-address-card" aria-hidden="true"></i>
@@ -222,7 +231,7 @@ if (
             <div class="signature mb-2" style="width: 100%; height: 200px;">
                 <canvas id="signature-canvas" style="border: 1px black; background-color:white;width: 100%; height: 200px;"></canvas>
             </div>
-            <button type="button" id="btnLimpiar">Borrar</button>
+            <button class="borrar" type="button" id="btnLimpiar">Borrar</button>
             <div class="caja">
                 <label><input required type="checkbox" name="cbox12"> Acepto términos y condiciones</label>
             </div>
