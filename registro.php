@@ -67,7 +67,7 @@ if (
     $stmt->bindParam(':firma', $firma);
 
     if ($stmt->execute()) {
-        echo "<script>console.log('Usuario registrado correctamente' );</script>";
+        echo '<script>console.log("Usuario registrado correctamente" ); window.location = "iniciarSesion.php";</script>';
     } else {
         echo "<script>console.log('Ha ocurrido un error en el registro' );</script>";
     }
@@ -223,7 +223,6 @@ if (
                 <canvas id="signature-canvas" style="border: 1px black; background-color:white;width: 100%; height: 200px;"></canvas>
             </div>
             <button type="button" id="btnLimpiar">Borrar</button>
-            <button type="button" id="btnDescargar">Descargar</button>
             <div class="caja">
                 <label><input required type="checkbox" name="cbox12"> Acepto términos y condiciones</label>
             </div>

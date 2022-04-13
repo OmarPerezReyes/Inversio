@@ -37,3 +37,10 @@ window.addEventListener("resize", function(){
     }
 
 });
+
+//OJO DEL MENU
+jQuery('#clickme').on('click', function() {
+    jQuery('#elpassword').attr('type', function(index, attr) {
+      return attr == 'text' ? 'password' : 'text';
+    })
+  })
