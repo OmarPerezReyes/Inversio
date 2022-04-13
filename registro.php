@@ -120,7 +120,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Usuario</h5>
-                    <input required type="text" name="usuario" class="input" autocomplete="nope" pattern:"[a-zA-Z0-9\_\-]{4,16}">
+                    <input required type="text" name="usuario" class="input" autocomplete="nope" pattern="[A-Za-z0-9]{4,15}" title="Considere ">
                 </div>
             </div>
 
@@ -171,7 +171,7 @@ if (
                 <div class="div">
                     <h5>Número de teléfono</h5>
                     <!--BUSCAR LIMITAR EL TELEFONO-->
-                    <input required type="number" name="numeroTelefono" class="input" onkeydown="if(this.value.length == 10) return false;" autocomplete="nope">
+                    <input required type="number" name="numeroTelefono" class="input" maxlength="10" oninput="maxlengthNumber(this);" autocomplete="nope">
                     <!-- <input type="number" id="tentacles" name="tentacles" min="10" max="100"> -->
                     <!-- <input name=numero type=text maxlength=7> -->
                 </div>
