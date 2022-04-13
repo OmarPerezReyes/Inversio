@@ -285,6 +285,13 @@ a:hover {
     background-position: right;
 }
 
+
+/*Firma digital*/
+
+.d-block {
+    color: white;
+}
+
 @media screen and (max-width: 1050px) {
     .contenedor {
         grid-gap: 2rem;
