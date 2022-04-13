@@ -1,3 +1,34 @@
+<?php
+
+  require 'controllers/database.php';
+
+  $message = '';
+
+  if (!empty($_POST['usuario']) && !empty($_POST['nombre']) && !empty($_POST['apellidoPaterno'])&& !empty($_POST['apellidoMaterno'])
+  && !empty($_POST['fechaNacimiento'])&& !empty($_POST['numeroTelefono'])&& !empty($_POST['curp'])
+  && !empty($_POST['correo'])&& !empty($_POST['pass'])) {
+    $sql = "INSERT INTO cliente (usuario, nombre, apellido_paterno, apellido_materno, fecha_nacimiento,
+    telefono_celular, curp, correo, pass) VALUES (:usuario, :nombre, :apellido_paterno, :apellido_materno, :fecha_nacimiento,
+    :telefono_celular, :curp, :correo, :pass)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':usuario', $_POST['usuario']);
+    $stmt->bindParam(':nombre', $_POST['nombre']);
+    $stmt->bindParam(':apellido_paterno', $_POST['apellidoPaterno']);
+    $stmt->bindParam(':apellido_materno', $_POST['apellidoMaterno']);
+    $stmt->bindParam(':fecha_nacimiento', $_POST['fechaNacimiento']);
+    $stmt->bindParam(':telefono_celular', $_POST['numeroTelefono']);
+    $stmt->bindParam(':curp', $_POST['curp']);
+    $stmt->bindParam(':correo', $_POST['correo']);
+    $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+    $stmt->bindParam(':pass', $pass);
+
+    if ($stmt->execute()) {
+        echo "<script>console.log('Usuario registrado correctamente' );</script>";
+    } else {
+        echo "<script>console.log('Ha ocurrido un error en el registro' );</script>";
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,7 +49,7 @@
     <a id="inversioLogo" href="index.html"><img src="assets/img/logoPrincipalBlanco.png" id="logoPrincipal"></a>
 
     <div class="contenido-login">
-        <form action="iniciarSesion.html">
+        <form action="iniciarSesion.html" method="POST">
             <img src="assets/img/avatar.png">
             <h2 class="title">Únete a Inversio</h2>
 
@@ -28,7 +59,7 @@
                 </div>
                 <div class="div">
                     <h5>Usuario</h5>
-                    <input required type="text" class="input">
+                    <input required type="text" name="usuario" class="input">
                 </div>
             </div>
 
@@ -38,7 +69,7 @@
                 </div>
                 <div class="div">
                     <h5>Nombre</h5>
-                    <input required type="text" class="input">
+                    <input required type="text" name="nombre" class="input">
                 </div>
             </div>
 
@@ -48,7 +79,7 @@
                 </div>
                 <div class="div">
                     <h5>Apellido paterno</h5>
-                    <input required type="text" class="input">
+                    <input required type="text" name="apellidoPaterno" class="input">
                 </div>
             </div>
 
@@ -58,7 +89,7 @@
                 </div>
                 <div class="div">
                     <h5>Apellido materno</h5>
-                    <input required type="text" class="input">
+                    <input required type="text" name="apellidoMaterno" class="input">
                 </div>
             </div>
 
@@ -68,7 +99,7 @@
                 </div>
                 <div class="div">
                     <h5>Fecha de nacimiento</h5>
-                    <input required type="date" class="input" name="">
+                    <input required type="date" name="fechaNacimiento" class="input" name="">
                 </div>
             </div>
 
@@ -79,7 +110,7 @@
                 <div class="div">
                     <h5>Número de teléfono</h5>
                     <!--BUSCAR LIMITAR EL TELEFONO-->
-                    <input required type="number" class="input" onkeydown="if(this.value.length == 10) return false;">
+                    <input required type="number" name="numeroTelefono" class="input" onkeydown="if(this.value.length == 10) return false;">
                     <!-- <input type="number" id="tentacles" name="tentacles" min="10" max="100"> -->
                     <!-- <input name=numero type=text maxlength=7> -->
                 </div>
@@ -91,7 +122,7 @@
                 </div>
                 <div class="div">
                     <h5>CURP</h5>
-                    <input required type="text" class="input" maxlength=18>
+                    <input required type="text" name="curp"  class="input" maxlength=18>
                 </div>
             </div>
 
@@ -101,7 +132,7 @@
                 </div>
                 <div class="div">
                     <h5>Correo</h5>
-                    <input required type="email" class="input" autocomplete="chrome-off">
+                    <input required type="email" name="correo" class="input" autocomplete="chrome-off">
                 </div>
             </div>
 
@@ -111,7 +142,7 @@
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input required type="password" class="input" autocomplete="new-password" maxlength=8 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra mayúscula o minúscula. La contraseña debe empezar con una letra y contener al menor un dígito"
+                    <input required type="password" name="pass" class="input" autocomplete="new-password" maxlength=8 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra mayúscula o minúscula. La contraseña debe empezar con una letra y contener al menor un dígito"
                         required>
                 </div>
             </div>
@@ -123,7 +154,7 @@
                 <div class="div">
                     <h5>Identificación oficial</h5>
                     <label class="file">
-                        <input type="file"
+                        <input type="file" name="identificacionOficial"
                                id="file"
                                onchange="fileChoose(event,this)"
                                aria-label="File browser example">
@@ -141,7 +172,7 @@
             <div class="caja">
                 <label><input required type="checkbox" name="cbox12"> Acepto términos y condiciones</label>
             </div>
-            <input required type="submit" class="btn" value="Finalizar">
+            <input required type="submit" class="btn"  id="btnDescargar" name="firma" value="Finalizar">
         </form>
     </div>
     <script src="assets/js/borrarFirma.js"></script>
