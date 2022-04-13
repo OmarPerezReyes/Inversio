@@ -9,6 +9,7 @@ $btnDescargar.onclick = () => {
     // Convertir la imagen a Base64 y ponerlo en el enlace
     enlace.href = $canvas.toDataURL();
     // Hacer click en él
+    //enlace.click();
     document.getElementById("firmaImagen").value = enlace;
 };
 

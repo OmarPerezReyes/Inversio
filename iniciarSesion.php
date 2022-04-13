@@ -1,3 +1,30 @@
+<?php
+session_start();
+
+session_unset();
+
+session_destroy();
+  if (isset($_SESSION['user_id'])) {
+    header('Location: /menuPrincipal.html');
+  }
+
+  require 'controllers/database.php';
+
+  if (!empty($_POST['usuario']) && !empty($_POST['pass'])) {
+    $records = $conexion->prepare('SELECT id_cliente, usuario, pass FROM cliente WHERE usuario = :usuario');
+    $records->bindParam(':usuario', $_POST['usuario']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+        $message = '';
+    echo $results['pass'];
+    if (count($results) > 0 && password_verify($_POST['pass'], $results['pass'])) {
+      $_SESSION['user_id'] = $results['id_cliente'];
+      header("Location: menuPrincipal.html");
+    } else {
+      $message = 'Sorry, those credentials do not match';
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,6 +38,9 @@
 </head>
 
 <body>
+<?php if(!empty($message)): ?>
+  <p> <?= $message ?></p>
+<?php endif; ?>
     <img class="wave" src="">
     <a id="Regresarboton" href="./index.html"><i class="fa fa-chevron-circle-left" style="font-size:48px" id="Regresar"></i></a>
     <a id="inversioLogo" href="index.html"><img src="assets/img/logoPrincipal.jpeg" id="logoPrincipal"></a>
@@ -19,7 +49,7 @@
             <img src="./assets/img/izqIniciarSesion.png">
         </div>
         <div class="login-content">
-            <form action="menuPrincipal.html">
+            <form action="iniciarSesion.php" method="POST">
                 <img src="assets/img/avatar.png">
                 <h2 class="title">Bienvenido</h2>
                 <div class="input-div one">
@@ -28,7 +58,7 @@
                     </div>
                     <div class="div">
                         <h5>Usuario</h5>
-                        <input required type="text" class="input">
+                        <input required type="text" name="usuario" class="input">
                     </div>
                 </div>
                 <div class="input-div pass">
@@ -37,7 +67,7 @@
                     </div>
                     <div class="div">
                         <h5>Contraseña</h5>
-                        <input required type="password" class="input" autocomplete="new-password">
+                        <input required type="password" name="pass" class="input" autocomplete="new-password">
                     </div>
                 </div>
                 <a href="./olvidocontrasena.html">¿Olvidaste tu contraseña?</a>
