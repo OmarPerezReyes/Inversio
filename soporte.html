@@ -18,16 +18,20 @@
             <i class="icon-menu" id="btn_open"></i>
         </div>
 
-        <a href="menuPrincipal.html"> <img src="assets/img/logoPrincipalBlanco.png" width="200" height="50"/></a>
-
+        <a href="menuPrincipal.html">
+            <div class="logoP">
+                <img src="assets/img/logoPrincipalBlanco.png"/>
+            </div>
+        </a>
         <div class="support">
             <a href="soporte.html"> <img src="assets/img/soporteTecnico.png"></img>
         </div>
         <a href="iniciarSesion.html">
             <div class="cerrar_sesion">
-                <p>Cerrar sesión</p>
+                <img src="assets/img/cerrarSesion.png">
             </div>
         </a>
+        <p>Cerrar sesion</p>
     </header>
 
     <div class="menu__side" id="menu_side">
@@ -86,39 +90,48 @@
     </div>
 
     <main>
-        <div class="Contenedores">
-            
-            <div class="dineroDisponible">
-                <p>Dinero disponible:</p>
-                <div class="dinero">
-                    <p>$1,000,000</p><i class="fa-solid fa-eye"></i>
-                </div>
-                <p>Detalles de cuenta:</p>
-                <div class="boton_personalizado">
-                    <a href="">Soy un botón</a>
-                    <a href="">Soy otro boton</a>
+        <div class="sup">
+            <div class="titulo">
+                <h1>¿Con que podemos ayudarte?</h1>
+            </div>
+            <div class="buscar1">
+                <div id='search-box'>
+                    <form action='/search' id='search-form' method='get' target='_top'>
+                    <input id='search-text' name='q' placeholder='Escribe lo que buscas' type='text'/>
+                    <button id='search-button' type='submit'><span>Busca!</span></button>
+                    </form>
                 </div>
             </div>
-        <div class="tuActividad">
-            <div class="dineroDisponible">
-                <p>Dinero disponible:</p>
-                <div class="dinero">
-                    <p>$1,000,000</p><i class="fa-solid fa-eye"></i>
+            <div class="infSup">
+                <div class="dato3">
+                    <div class="icono-dato">
+                        <img src="assets/img/dinero.png" alt="tarjeta">
+                    </div>
+                    <div class="informacion2">
+                        <h4>Pagos</h4>
+                        <P>·ReyesomarP@hotmail.com</P>
+                        <P>·CURP</P>
+                        <P>·RFC  REPE336789457</P>
+                        <P>·834 111 9022</P>
+                    </div>
                 </div>
-                <p>Detalles de cuenta:</p>
-                <div class="boton_personalizado">
-                    <a href="">Soy un botón</a>
-                    <a href="">Soy otro boton</a>
+                <div class="dato3">
+                    <div class="icono-dato">
+                        <img src="assets/img/seguridad.webp" alt="tarjeta">
+                    </div>
+                    <div class="informacion2">
+                        <h4>Seguridad y tu perfil</h4>
+                        <P>·SEGURIDAD CONFIGURADA</P>
+                    </div>
                 </div>
+            </div>
+            <div class="titulo">
+                <h3>¿Necesitas mas ayuda?</h3>
+            </div>
+            <div class="buscar2">
+                <h4>Contactanos</h4>
             </div>
         </div>
-        <div class="tarjetas">
-            <p>Mis tarjetas:</p>
-            <div>
-                <img src="" alt="tarjeta">
-            </div>
-        </div>
-</div>
     </main>
     <section id="footer">
         <div class="footer contenedor">
