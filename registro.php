@@ -1,17 +1,20 @@
 <?php
 
-  require 'controllers/database.php';
+require 'controllers/database.php';
 
-  $message = '';
+$message = '';
 
-  if (!empty($_POST['usuario']) && !empty($_POST['nombre']) && !empty($_POST['apellidoPaterno'])&& !empty($_POST['apellidoMaterno'])
-  && !empty($_POST['fechaNacimiento'])&& !empty($_POST['numeroTelefono'])&& !empty($_POST['curp'])
-  && !empty($_POST['correo'])&& !empty($_POST['pass'])) {
+if (
+    !empty($_POST['usuario']) && !empty($_POST['nombre']) && !empty($_POST['apellidoPaterno']) && !empty($_POST['apellidoMaterno'])
+    && !empty($_POST['fechaNacimiento']) && !empty($_POST['numeroTelefono']) && !empty($_POST['curp'])
+    && !empty($_POST['correo']) && !empty($_POST['pass'])
+) {
     $sql = "INSERT INTO cliente (usuario, nombre, apellido_paterno, apellido_materno, fecha_nacimiento,
-    telefono_celular, curp, correo, pass) VALUES (:usuario, :nombre, :apellido_paterno, :apellido_materno, :fecha_nacimiento,
-    :telefono_celular, :curp, :correo, :pass)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':usuario', $_POST['usuario']);
+    telefono_celular, curp, correo, pass, identificacion_oficial, firma) VALUES (:usuario, :nombre, :apellido_paterno, :apellido_materno, :fecha_nacimiento,
+    :telefono_celular, :curp, :correo, :pass, :identificacion_oficial, :firma)";
+    $stmt = $conexion->prepare($sql);
+    $usuario = $_POST["usuario"];
+    $stmt->bindParam(':usuario', $usuario);
     $stmt->bindParam(':nombre', $_POST['nombre']);
     $stmt->bindParam(':apellido_paterno', $_POST['apellidoPaterno']);
     $stmt->bindParam(':apellido_materno', $_POST['apellidoMaterno']);
@@ -21,13 +24,54 @@
     $stmt->bindParam(':correo', $_POST['correo']);
     $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
     $stmt->bindParam(':pass', $pass);
+    if ($_FILES['identificacionOficial']['error'] > 0) {
+        echo '
+        <script>
+            alert("Error al cargar el archivo. Por favor intente de nuevo.");
+        </script>
+        ';
+    } else {
+        $permitido = array("application/pdf", 'image/jpg');
+        if (in_array($_FILES['identificacionOficial']['type'], $permitido)) {
+            $ruta = 'assets/files/';
+            opendir($ruta);
+            $_FILES['identificacionOficial']['name'] = $usuario . "_identificacionOficial.pdf";
+            $credencial = $ruta . $_FILES['identificacionOficial']['name'];
+            copy($_FILES['identificacionOficial']['tmp_name'], $credencial);
+            if (!file_exists($ruta)) {
+                mkdir($ruta);
+            }
+        } else {
+            echo '
+            <script>
+                alert("Tipo de archivo pdf no permitido.");
+            </script>
+            ';
+        }
+    }
+    $stmt->bindParam(':identificacion_oficial', $credencial);
+
+    $img = $_POST['firma'];
+    $img = str_replace('data:image/png;base64,', '', $img);
+    $fileData = base64_decode($img);
+    $fileName = $usuario . '_firma.png';
+
+    $ruta = 'assets/files/';
+    opendir($ruta);
+    $firma = $ruta . $fileName;
+    copy($_POST['firma'], $firma);
+    if (!file_exists($ruta)) {
+        mkdir($ruta);
+    }
+
+    $stmt->bindParam(':firma', $firma);
 
     if ($stmt->execute()) {
         echo "<script>console.log('Usuario registrado correctamente' );</script>";
     } else {
         echo "<script>console.log('Ha ocurrido un error en el registro' );</script>";
     }
-  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,14 +86,30 @@
     <link rel="stylesheet" type="text/css" href="assets/css/registro.css">
     <script src="assets/js/firma.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+<script>
+    function generarImagen() {
+    const enlace = document.createElement('a');
+    // El título
+    enlace.download = "Firma.png";
+    // Convertir la imagen a Base64 y ponerlo en el enlace
+    enlace.href = $canvas.toDataURL();
+    // Hacer click en él
+    document.getElementById("firmaImagen").value = enlace;
+};
+
+</script>
 </head>
 
 <body>
     <a id="Regresarboton" href="./index.html"><i class="fa fa-chevron-circle-left" style="font-size:48px" id="Regresar"></i></a>
     <a id="inversioLogo" href="index.html"><img src="assets/img/logoPrincipalBlanco.png" id="logoPrincipal"></a>
 
+    <?php if (!empty($message)) : ?>
+        <p> <?= $message ?></p>
+    <?php endif; ?>
+
     <div class="contenido-login">
-        <form action="iniciarSesion.html" method="POST">
+        <form action="registro.php" method="POST" enctype="multipart/form-data">
             <img src="assets/img/avatar.png">
             <h2 class="title">Únete a Inversio</h2>
 
@@ -122,7 +182,7 @@
                 </div>
                 <div class="div">
                     <h5>CURP</h5>
-                    <input required type="text" name="curp"  class="input" maxlength=18>
+                    <input required type="text" name="curp" class="input" maxlength=18>
                 </div>
             </div>
 
@@ -142,8 +202,7 @@
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input required type="password" name="pass" class="input" autocomplete="new-password" maxlength=8 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra mayúscula o minúscula. La contraseña debe empezar con una letra y contener al menor un dígito"
-                        required>
+                    <input required type="password" name="pass" class="input" autocomplete="new-password" maxlength=8 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra mayúscula o minúscula. La contraseña debe empezar con una letra y contener al menor un dígito" required>
                 </div>
             </div>
 
@@ -154,12 +213,8 @@
                 <div class="div">
                     <h5>Identificación oficial</h5>
                     <label class="file">
-                        <input type="file" name="identificacionOficial"
-                               id="file"
-                               onchange="fileChoose(event,this)"
-                               aria-label="File browser example">
-                        <span class="file-custom"
-                              data-after="Credencial de elector"></span>
+                        <input type="file" name="identificacionOficial" id="file" accept="application/pdf" onchange="fileChoose(event,this)" aria-label="File browser example">
+                        <span class="file-custom" data-after="Credencial de elector"></span>
                     </label>
                 </div>
             </div>
@@ -172,7 +227,8 @@
             <div class="caja">
                 <label><input required type="checkbox" name="cbox12"> Acepto términos y condiciones</label>
             </div>
-            <input required type="submit" class="btn"  id="btnDescargar" name="firma" value="Finalizar">
+            <input type="hidden" id="firmaImagen" name="firma">
+            <input required type="submit" id="btnDescargar" class="btn" onclick="generarImagen()">
         </form>
     </div>
     <script src="assets/js/borrarFirma.js"></script>
