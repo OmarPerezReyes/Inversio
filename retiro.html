@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soporte</title>
+    <title>Retiro</title>
 
     <link rel="stylesheet" href="assets/css/estilos.css">
     <link rel="stylesheet" href="assets/css/fontello.css">
@@ -60,7 +60,7 @@
                 </div>
             </a>
 
-            <a href="retiro.html">
+            <a href="retiro.html" class="selected">
                 <div class="option">
                     <i class="icon-money" title="Retiro"></i>
                     <h4>Retiro</h4>
@@ -86,39 +86,43 @@
     </div>
 
     <main>
-        <div class="Contenedores">
-            
-            <div class="dineroDisponible">
-                <p>Dinero disponible:</p>
-                <div class="dinero">
-                    <p>$1,000,000</p><i class="fa-solid fa-eye"></i>
-                </div>
-                <p>Detalles de cuenta:</p>
-                <div class="boton_personalizado">
-                    <a href="">Soy un botón</a>
-                    <a href="">Soy otro boton</a>
-                </div>
+        <div class="retiro1">
+            <div class="retiroConTarjeta">
+                <form action="" method="post">
+                    <h3>Retiro</h3>
+                    <p>BENEFICIARIO</p>
+                    <input type="text" name="" id="" class="ingreso">
+                    <p>CLABE</p>
+                    <input type="text" name="" id="" class="ingreso">
+                    <p>IMPORTE</p>
+                    <div class="importe_cuenta">
+                        <p>$</p><input type="number" name="" id="" class="ingreso">
+                    </div>
+                    <p>CONCEPTO</p>
+                    <input type="text" name="" id="" class="concepto">
+                    <input type="submit" value="Continuar" class="btnContinuarRetiro">
+                </form>
             </div>
-        <div class="tuActividad">
-            <div class="dineroDisponible">
-                <p>Dinero disponible:</p>
-                <div class="dinero">
-                    <p>$1,000,000</p><i class="fa-solid fa-eye"></i>
-                </div>
-                <p>Detalles de cuenta:</p>
-                <div class="boton_personalizado">
-                    <a href="">Soy un botón</a>
-                    <a href="">Soy otro boton</a>
-                </div>
+            <div class="retiroSinTarjeta">
+                <form action="" method="post">
+                    <h3>Retiro sin tarjeta:</h3>
+                    <p>CUENTA DE RETIRO</p>
+                    <!-- <input type="text" name="" id=""> -->
+                    <div class="importe_cuenta">
+                        <p>1234512345</p>
+                        <p>$3,000</p>
+                    </div>
+                    <p>IMPORTE</p>
+                    <div class="importe_cuenta">
+                        <p>$</p><input type="text" name="" id="" class="ingreso">
+                    </div>
+                    
+                    <p>CONCEPTO</p>
+                    <input type="text" name="" id="" class="concepto">
+                    <input type="submit" value="Continuar" class="btnContinuarRetiro">
+                </form>
             </div>
         </div>
-        <div class="tarjetas">
-            <p>Mis tarjetas:</p>
-            <div>
-                <img src="" alt="tarjeta">
-            </div>
-        </div>
-</div>
     </main>
     <section id="footer">
         <div class="footer contenedor">
