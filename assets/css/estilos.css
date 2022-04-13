@@ -103,7 +103,7 @@ header a{
 .support img{
     color: #fff;
     width: 50px;
-    height: 50px;
+    height: 40px;
     margin-left: 20%;
 }
 .cerrar_sesion{
@@ -203,8 +203,6 @@ a.selected{
     text-align: center;
     align-items: center;
 }
-
-
 
 .social {
     display: flex;
@@ -311,11 +309,26 @@ a.selected{
 .tuActividad{
     grid-row: span 2;
 }
-.dineroDisponible, .tarjetas, .tuActividad,.retiro{
+.dineroDisponible, .tarjetas, .tuActividad, .retiro{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #b6bcc0;
+}
+.dineroDisponible, .tarjetas{
+    height: 240px;
+}
+.content-tarjeta img{
+    width: 350px;
+    height: 100%;
+}
+.dinero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dinero i{
+    margin-left: 5px;
 }
 /*Retiro*/
 .retiro1{
@@ -386,14 +399,6 @@ a.selected{
     font-size: 20px;
 }
 
-.dinero{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.dinero i{
-    margin-left: 5px;
-}
 .boton_personalizado{
     width: 100%;
     display: grid;
@@ -404,11 +409,158 @@ a.selected{
     color: #fff;
 }
 
+/* Pagina mi perfil */
+.miperfil{
+    display: grid;
+    width: 40%;
+    grid-template-columns: 100%;
+    grid-template-rows: 70px 1fr;
+    margin: auto;
+    border: solid 1px white;
+    height: 800px;
+    gap: 20px;
+}
+.persona{
+    background-color: #b6bcc0;
+    border: solid 1px #000;
+}
+.datos{
+    background-color: #b6bcc0;
+    border: solid 1px #000;
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+}
+.dato{
+    display: flex;
+    align-items: center;
+    border: solid 1px #000;
+    margin: 5px;
+    padding: 10px;
+}
+.icono-perfi{
+    display: flex;
+    justify-content: left;
+}
+.icono-perfi h1{
+    margin-top: 15px;
+    margin-left: 30px;
+}
+.icono-perfi img{
+    margin-top: 10px;
+    margin-left: 15px;
+    width: 50px;
+    height: 50px;
+}
+.dato .icono-dato{
+    margin-right: 5px;
+    border: solid 1px #000;
+}
+.icono-dato img{
+    width: 50px;
+    height: 50px;
+}
+
+
+/* Pagina pagar servicio */
+.pagarServicio{
+    border: solid 1px white;
+    width: 40%;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px 100px 100px;
+    gap: 20px;
+}
+.item-servicio{
+    border: solid 1px #000;
+    background-color: #b6bcc0;
+    display: flex;
+}
+.dato2{
+    display: flex;
+    align-items: center;
+    border: solid 1px #000;
+    margin: 5px;
+    padding: 10px;
+    width: 470px;
+}
+.icono-dato2 img{
+    width: 50px;
+    height: 50px;
+}
+.dato2 .icono-dato2{
+    margin-right: 5px;
+    border: solid 1px #000;
+}
+
+/* Página su actividad */
+.actividad-page{
+    width: 37%;
+    margin: auto;
+    height: 100%;
+    background-color: #d7dde0;
+    /* border: solid 1px #000; */
+    display: flex;
+    flex-direction: column;
+}
+.actividad-page hr{
+    background-color: rgb(167, 159, 159);
+    width: 85%;
+    align-self: center;
+}
+.actividad-page > p{
+    margin: 10px 50px;
+}
+.actividades{
+    border-bottom: solid 1px rgb(167, 159, 159);
+    margin: 5px 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 80%;
+    padding: 5px 45px;
+    height: 100px;
+}
+.icono{
+    border: solid 1px #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icono1{
+    border: solid 1px #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.descripcion_cant_fecha{
+    border: solid 1px #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+}
+.descripcion_cant_fecha1{
+    border: solid 1px #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    width: 350px;
+}
+.descip_cant{
+    /* border: solid 1px #000; */
+    display: flex;
+    justify-content: space-between;
+}
+.fecha{
+    /* border: solid 1px #000; */
+    text-align: end;
+}
 @media screen and (max-width: 760px){
     .body_move{
         margin-left: 0px;
     }
-
     .menu__side_move{
         width: 80px;
         left: -80px;
@@ -429,6 +581,36 @@ a.selected{
     .retiroSinTarjeta, .retiroConTarjeta{
         grid-column: span 2;
     }
-    
-     
+    .miperfil, .pagarServicio{
+        width: 100%;
+    }
+    .actividad-page{
+        width: 100%;
+    }
+    .transferir{
+        width: 90%;
+        margin-bottom: 50px;
+        margin-left: 20px;
+    }
+    .tarjetas{
+        height: 200px;
+    }
+    .content-tarjeta img{
+        width:300px;
+        height: 150px;
+    }
+    .descripcion_cant_fecha1, .icono1{
+        width: 330px;
+    }
+    .descripcion_cant_fecha1{
+        height: 50px;
+    }
+    .miperfil{
+        height: 850px;
+    }
+    .icono-perfi h1{
+        margin-top: 20px;
+        margin-left: 10px;
+        font-size: 23px;
+    }
 }
