@@ -110,7 +110,7 @@ if (
     <?php endif; ?>
 
     <div class="contenido-login">
-        <form action="registro.php" method="POST" enctype="multipart/form-data">
+        <form action="registro.php" method="POST" enctype="multipart/form-data" autocomplete="off">
             <img src="assets/img/avatar.png">
             <h2 class="title">Únete a Inversio</h2>
 
@@ -120,8 +120,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Usuario</h5>
-                    <input required type="text" name="usuario" class="input" autocomplete="nope" pattern="[A-Za-z0-9]{4,15}" title="Considere ">
-                    <input required type="text" name="usuario" class="input" pattern="^[a-zA-Z]+$" title="El usuario no debe contener acentos, números ni espacios en blanco" autocomplete="nope" >
+                    <input required type="text" name="usuario" class="input" pattern="^[a-zA-Z]+$" title="El usuario no debe contener acentos, números ni espacios en blanco" >
                 </div>
             </div>
 
@@ -131,7 +130,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Nombre</h5>
-                    <input required type="text" name="nombre" class="input" autocomplete="nope" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" title="El nombre no puede contener carácteres especiales o números" title="revisa">
+                    <input required type="text" name="nombre" class="input" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" title="El nombre no puede contener carácteres especiales o números" title="revisa">
                 </div>
             </div>
 
@@ -141,7 +140,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Apellido paterno</h5>
-                    <input required type="text" name="apellidoPaterno" class="input" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="El apellido no debe contener carácteres especiales o números" autocomplete="nope">
+                    <input required type="text" name="apellidoPaterno" class="input" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="El apellido no debe contener carácteres especiales o números">
                 </div>
             </div>
 
@@ -151,7 +150,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Apellido materno</h5>
-                    <input required type="text" name="apellidoMaterno" class="input" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="El apellido no debe contener carácteres especiales o números" autocomplete="nope">
+                    <input required type="text" name="apellidoMaterno" class="input" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="El apellido no debe contener carácteres especiales o números">
                 </div>
             </div>
 
@@ -172,8 +171,7 @@ if (
                 <div class="div">
                     <h5>Número de teléfono</h5>
                     <!--BUSCAR LIMITAR EL TELEFONO-->
-                    <input required type="number" name="numeroTelefono" class="input" maxlength="10" oninput="maxlengthNumber(this);" autocomplete="nope">
-                    <input required type="number" name="numeroTelefono" class="input" pattern="[0-9]{9}" title="El número telefónico debe ser de 10 digitos" autocomplete="nope">
+                    <input required type="number" name="numeroTelefono" class="input" maxlength="10" oninput="maxlengthNumber(this);" pattern="[0-9]{9}" title="El número telefónico debe ser de 10 digitos">
                     <!-- <input type="number" id="tentacles" name="tentacles" min="10" max="100"> -->
                     <!-- <input name=numero type=text maxlength=7> -->
                 </div>
@@ -185,7 +183,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>CURP</h5>
-                    <input required type="text" name="curp" class="input" maxlength=18 autocomplete="nope">
+                    <input required type="text" name="curp" class="input" maxlength=18 pattern="[A-Za-z0-9]{18}" title="La CURP son 18 carácteres donde solo puede contener letras y números" onkeyup="javascript:this.value=this.value.toUpperCase();" >
                 </div>
             </div>
 
@@ -195,7 +193,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Correo</h5>
-                    <input required type="email" name="correo" class="input" autocomplete="chrome-off" autocomplete="nope">
+                    <input required type="email" name="correo" class="input">
                 </div>
             </div>
 
@@ -205,7 +203,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input required type="password" name="pass" class="input" autocomplete="new-password" minlength="8" maxlength=15 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required autocomplete="nope">
+                    <input required type="password" name="pass" class="input" minlength="8" maxlength=15 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required>
                 </div>
             </div>
             <div class="input-div pass">
@@ -214,7 +212,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Confirmar contraseña</h5>
-                    <input required type="password" name="pass_dos" class="input" autocomplete="new-password" minlength="8" maxlength=15 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required autocomplete="nope">
+                    <input required type="password" name="pass_dos" class="input" autocomplete="new-password" minlength="8" maxlength=15 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required>
                 </div>
             </div>
             <div class="input-div one arribaDiv">

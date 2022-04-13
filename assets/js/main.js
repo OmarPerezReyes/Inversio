@@ -25,3 +25,12 @@ function fileChoose(event, element) {
         element.nextElementSibling.setAttribute('data-after', 'Credencial.pdf');
     }
 }
+
+
+// limitar tamaño del telefono
+
+function maxlengthNumber(obj) {
+    if (obj.value.length > obj.maxLength) {
+        obj.value = obj.value.slice(0, obj.maxLength);
+    }
+}
