@@ -26,7 +26,7 @@
             <a href="soporte.html"> <img src="assets/img/soporteTecnico.png"></img>
             </a>
         </div>
-        <a href="iniciarSesion.php">
+        <a href="iniciarSesion.html">
             <div class="cerrar_sesion">
                 <p>Cerrar sesión</p>
             </div>
@@ -86,12 +86,15 @@
             <div class="dineroDisponible">
                 <p>Dinero disponible:</p>
                 <div class="dinero">
-                    <p>$1,000,000</p><i class="fa-solid fa-eye"></i>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <input id=elpassword type=password class="dineroVer" value=$00000000 placeholder=password />
+                    <svg id=clickme width=28 height=25 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M569.354 231.631C512.97 135.949 407.81 72 288 72 168.14 72 63.004 135.994 6.646 231.631a47.999 47.999 0 0 0 0 48.739C63.031 376.051 168.19 440 288 440c119.86 0 224.996-63.994 281.354-159.631a47.997 47.997 0 0 0 0-48.738zM288 392c-102.556 0-192.091-54.701-240-136 44.157-74.933 123.677-127.27 216.162-135.007C273.958 131.078 280 144.83 280 160c0 30.928-25.072 56-56 56s-56-25.072-56-56l.001-.042C157.794 179.043 152 200.844 152 224c0 75.111 60.889 136 136 136s136-60.889 136-136c0-31.031-10.4-59.629-27.895-82.515C451.704 164.638 498.009 205.106 528 256c-47.908 81.299-137.444 136-240 136z"/></svg>
+
                 </div>
                 <p>Detalles de cuenta:</p>
                 <div class="boton_personalizado">
-                    <a href="">Ingresar Dinero</a>
-                    <a href="">Retirar Dinero</a>
+                    <input type="submit" value="Ingresar Dinero" class="btnMenu">
+                    <input type="submit" value="Retirar Dinero" class="btnMenu">
                 </div>
             </div>
             <div class="tuActividad">
@@ -117,6 +120,9 @@
             </div>
             <div class="tarjetas">
                 <p>Mis tarjetas:</p>
+                <div class="flecha">
+                    <input type="submit" value="→" class="btnFlecha">
+                </div>
                 <div class="content-tarjeta">
                     <img src="assets\img\tarjetaDebito.png" alt="tarjeta">
                 </div>
