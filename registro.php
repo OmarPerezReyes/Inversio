@@ -14,7 +14,15 @@ if (
     :telefono_celular, :curp, :correo, :pass, :identificacion_oficial, :firma)";
     $stmt = $conexion->prepare($sql);
     $usuario = $_POST["usuario"];
-    $stmt->bindParam(':usuario', $usuario);
+
+    $recordsDuplicado = $conexion->prepare('SELECT id_cliente FROM cliente WHERE usuario = :usuario');
+    $recordsDuplicado->bindParam(':usuario', $_POST['usuario']);
+    $recordsDuplicado->execute();
+    $resultsDuplicado = $recordsDuplicado->fetch(PDO::FETCH_ASSOC);
+    echo $resultsDuplicado['id_cliente'];
+
+    if ($resultsDuplicado['id_cliente'] == null) {
+        $stmt->bindParam(':usuario', $usuario);
     $stmt->bindParam(':nombre', $_POST['nombre']);
     $stmt->bindParam(':apellido_paterno', $_POST['apellidoPaterno']);
     $stmt->bindParam(':apellido_materno', $_POST['apellidoMaterno']);
@@ -24,7 +32,6 @@ if (
     $stmt->bindParam(':correo', $_POST['correo']);
     $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
     $stmt->bindParam(':pass', $pass);
-    echo $_POST['pass'];
     if ($_FILES['identificacionOficial']['error'] > 0) {
         echo '
         <script>
@@ -68,10 +75,61 @@ if (
     $stmt->bindParam(':firma', $firma);
 
     if ($stmt->execute()) {
-        echo '<script>console.log("Usuario registrado correctamente" ); window.location = "iniciarSesion.php";</script>';
+        $sqlDos = "INSERT INTO cuenta_bancaria (id_numero_cuenta, id_cliente, clabe) VALUES (:id_numero_cuenta, :id_cliente, :clabe)";
+        $stmtDos = $conexion->prepare($sqlDos);
+
+        $records = $conexion->prepare('SELECT id_cliente FROM cliente WHERE usuario = :usuario');
+        $records->bindParam(':usuario', $_POST['usuario']);
+        $records->execute();
+        $results = $records->fetch(PDO::FETCH_ASSOC);
+        echo $results['id_cliente'];
+        $numeroCuenta = $results['id_cliente'];
+        $clabe = $results['id_cliente'];
+        $idCliente = $results['id_cliente'];
+        $stmtDos->bindParam(':id_numero_cuenta', $numeroCuenta);
+        $stmtDos->bindParam(':id_cliente', $idCliente);
+        $stmtDos->bindParam(':clabe', $clabe);
+
+        echo "<script>console.log('Usuario registrado correctamente' );</script>";
+
+        if ($stmtDos->execute()) {
+
+            $sqlTres = "INSERT INTO tarjeta_debito (id_numero_tarjeta_debito, id_numero_cuenta, saldo, fecha_apertura, fecha_expiracion, 
+            cvv, nip, limite_movimientos, limite_retiros) VALUES (:id_numero_tarjeta_debito, :id_numero_cuenta, saldo, :fecha_apertura, :fecha_expiracion, 
+            :cvv, :nip, :limite_movimientos, :limite_retiros)";
+            $stmtTres = $conexion->prepare($sqlTres);
+
+            $recordsDos = $conexion->prepare('SELECT id_numero_cuenta FROM cuenta_bancaria WHERE id_cliente = :id_cliente');
+            $recordsDos->bindParam(':id_cliente',  $results['id_cliente']);
+            $recordsDos->execute();
+            $resultsDos = $recordsDos->fetch(PDO::FETCH_ASSOC);
+            echo $resultsDos['id_numero_cuenta'];
+            $resultsDos->bindParam(':id_numero_tarjeta_debito', $resultsDos['id_cliente']);
+            $resultsDos->bindParam(':id_numero_cuenta', $resultsDos['id_cliente']);
+            $resultsDos->bindParam(':saldo', $resultsDos['id_cliente']);
+            $resultsDos->bindParam(':fecha_apertura', $resultsDos['id_cliente']);
+            $resultsDos->bindParam(':fecha_expiracion', $resultsDos['id_cliente']);
+            $resultsDos->bindParam(':cvv', $resultsDos['id_cliente']);
+            $resultsDos->bindParam(':nip', $resultsDos['id_cliente']);
+            $resultsDos->bindParam(':limite_movimientos', $resultsDos['id_cliente']);
+            $resultsDos->bindParam(':limite_retiros', $resultsDos['id_cliente']);
+            echo "<script>console.log('Cuenta creada con éxito' );</script>";
+
+            if ($stmtTres->execute()) {
+                echo "<script>console.log('Tarjeta de débito asignada con éxito' );</script>";
+            } else {
+                echo "<script>console.log('Ha ocurrido un error en la asignación de la tarjeta' );</script>";
+            }
+        } else {
+            echo "<script>console.log('Ha ocurrido un error al crear la cuenta' );</script>";
+        }
     } else {
         echo "<script>console.log('Ha ocurrido un error en el registro' );</script>";
     }
+    } else {
+        echo "<script>alert('Usuario ya existente' );</script>";
+    }
+    
 }
 ?>
 <!DOCTYPE html>
@@ -87,18 +145,17 @@ if (
     <link rel="stylesheet" type="text/css" href="assets/css/registro.css">
     <script src="assets/js/firma.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
-<script>
-    function generarImagen() {
-    const enlace = document.createElement('a');
-    // El título
-    enlace.download = "Firma.png";
-    // Convertir la imagen a Base64 y ponerlo en el enlace
-    enlace.href = $canvas.toDataURL();
-    // Hacer click en él
-    document.getElementById("firmaImagen").value = enlace;
-};
-
-</script>
+    <script>
+        function generarImagen() {
+            const enlace = document.createElement('a');
+            // El título
+            enlace.download = "Firma.png";
+            // Convertir la imagen a Base64 y ponerlo en el enlace
+            enlace.href = $canvas.toDataURL();
+            // Hacer click en él
+            document.getElementById("firmaImagen").value = enlace;
+        };
+    </script>
 </head>
 
 <body>
@@ -120,7 +177,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Usuario</h5>
-                    <input required type="text" name="usuario" class="input" pattern="^[a-zA-Z]+$" title="El usuario no debe contener acentos, números ni espacios en blanco" >
+                    <input required type="text" name="usuario" class="input" pattern="^[a-zA-Z]+$" title="El usuario no debe contener acentos, números ni espacios en blanco">
                 </div>
             </div>
 
@@ -160,7 +217,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Fecha de nacimiento</h5>
-                    <input required type="date" name="fechaNacimiento" class="input" name=""  min="1925-01-01" max="2004-12-31">
+                    <input required type="date" name="fechaNacimiento" class="input" name="" min="1925-01-01" max="2004-12-31">
                 </div>
             </div>
 
@@ -183,7 +240,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>CURP</h5>
-                    <input required type="text" name="curp" class="input" maxlength=18 pattern="[A-Za-z0-9]{18}" title="La CURP son 18 carácteres donde solo puede contener letras y números" onkeyup="javascript:this.value=this.value.toUpperCase();" >
+                    <input required type="text" name="curp" class="input" maxlength=18 pattern="[A-Za-z0-9]{18}" title="La CURP son 18 carácteres donde solo puede contener letras y números" onkeyup="javascript:this.value=this.value.toUpperCase();">
                 </div>
             </div>
 

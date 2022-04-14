@@ -42,7 +42,7 @@ session_destroy();
 <?php endif; ?>
     <img class="wave" src="">
     <a id="Regresarboton" href="./index.html"><i class="fa fa-chevron-circle-left" style="font-size:48px" id="Regresar"></i></a>
-    <a id="inversioLogo" href="index.html"><img src="assets/img/logoPrincipal.jpeg" id="logoPrincipal"></a>
+    <a id="inversioLogo" href="index.html"><img src="assets/img/logoPrincipal.png" id="logoPrincipal"></a>
     <div class="container">
         <div class="img">
             <img src="./assets/img/izqIniciarSesion.png">
