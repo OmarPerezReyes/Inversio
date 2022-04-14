@@ -19,117 +19,179 @@ if (
     $recordsDuplicado->bindParam(':usuario', $_POST['usuario']);
     $recordsDuplicado->execute();
     $resultsDuplicado = $recordsDuplicado->fetch(PDO::FETCH_ASSOC);
-    echo $resultsDuplicado['id_cliente'];
 
-    if ($resultsDuplicado['id_cliente'] == null) {
+    if ($resultsDuplicado['id_cliente'] == null or false) {
         $stmt->bindParam(':usuario', $usuario);
-    $stmt->bindParam(':nombre', $_POST['nombre']);
-    $stmt->bindParam(':apellido_paterno', $_POST['apellidoPaterno']);
-    $stmt->bindParam(':apellido_materno', $_POST['apellidoMaterno']);
-    $stmt->bindParam(':fecha_nacimiento', $_POST['fechaNacimiento']);
-    $stmt->bindParam(':telefono_celular', $_POST['numeroTelefono']);
-    $stmt->bindParam(':curp', $_POST['curp']);
-    $stmt->bindParam(':correo', $_POST['correo']);
-    $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-    $stmt->bindParam(':pass', $pass);
-    if ($_FILES['identificacionOficial']['error'] > 0) {
-        echo '
+        $stmt->bindParam(':nombre', $_POST['nombre']);
+        $stmt->bindParam(':apellido_paterno', $_POST['apellidoPaterno']);
+        $stmt->bindParam(':apellido_materno', $_POST['apellidoMaterno']);
+        $stmt->bindParam(':fecha_nacimiento', $_POST['fechaNacimiento']);
+        $stmt->bindParam(':telefono_celular', $_POST['numeroTelefono']);
+        $stmt->bindParam(':curp', $_POST['curp']);
+        $stmt->bindParam(':correo', $_POST['correo']);
+        $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+        $stmt->bindParam(':pass', $pass);
+        if ($_FILES['identificacionOficial']['error'] > 0) {
+            echo '
         <script>
             alert("Error al cargar el archivo. Por favor intente de nuevo.");
         </script>
         ';
-    } else {
-        $permitido = array("application/pdf", 'image/jpg');
-        if (in_array($_FILES['identificacionOficial']['type'], $permitido)) {
-            $ruta = 'assets/files/';
-            opendir($ruta);
-            $_FILES['identificacionOficial']['name'] = $usuario . "_identificacionOficial.pdf";
-            $credencial = $ruta . $_FILES['identificacionOficial']['name'];
-            copy($_FILES['identificacionOficial']['tmp_name'], $credencial);
-            if (!file_exists($ruta)) {
-                mkdir($ruta);
-            }
         } else {
-            echo '
+            $permitido = array("application/pdf", 'image/jpg');
+            if (in_array($_FILES['identificacionOficial']['type'], $permitido)) {
+                $ruta = 'assets/files/';
+                opendir($ruta);
+                $_FILES['identificacionOficial']['name'] = $usuario . "_identificacionOficial.pdf";
+                $credencial = $ruta . $_FILES['identificacionOficial']['name'];
+                copy($_FILES['identificacionOficial']['tmp_name'], $credencial);
+                if (!file_exists($ruta)) {
+                    mkdir($ruta);
+                }
+            } else {
+                echo '
             <script>
                 alert("Tipo de archivo pdf no permitido.");
             </script>
             ';
+            }
         }
-    }
-    $stmt->bindParam(':identificacion_oficial', $credencial);
+        $stmt->bindParam(':identificacion_oficial', $credencial);
 
-    $img = $_POST['firma'];
-    $img = str_replace('data:image/png;base64,', '', $img);
-    $fileData = base64_decode($img);
-    $fileName = $usuario . '_firma.png';
+        $img = $_POST['firma'];
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $fileData = base64_decode($img);
+        $fileName = $usuario . '_firma.png';
 
-    $ruta = 'assets/files/';
-    opendir($ruta);
-    $firma = $ruta . $fileName;
-    copy($_POST['firma'], $firma);
-    if (!file_exists($ruta)) {
-        mkdir($ruta);
-    }
+        $ruta = 'assets/files/';
+        opendir($ruta);
+        $firma = $ruta . $fileName;
+        copy($_POST['firma'], $firma);
+        if (!file_exists($ruta)) {
+            mkdir($ruta);
+        }
 
-    $stmt->bindParam(':firma', $firma);
+        $stmt->bindParam(':firma', $firma);
 
-    if ($stmt->execute()) {
-        $sqlDos = "INSERT INTO cuenta_bancaria (id_numero_cuenta, id_cliente, clabe) VALUES (:id_numero_cuenta, :id_cliente, :clabe)";
-        $stmtDos = $conexion->prepare($sqlDos);
+        if ($stmt->execute()) {
+            //TABLA cuenta_bancaria: 
+            /* numero_cuenta(20): entidad_financiera, codigo_oficina, control, cuenta
+            ° 4 código de la entidad financiera por el Banco Central 
+            ° 4 código de la oficina donde abrió la cuenta 
+            ° 2 dígitos de control 
+            ° 10 dígitos asignados para numerar la cuenta 
+         */
+            $entidad_financiera = 1427;
+            settype($entidad_financiera, "string");
+            $codigo_oficina = 1039;
+            settype($codigo_oficina, "string");
+            $control = rand(10, 99);
+            settype($control, "string");
+            $cuenta = rand(1000000000, 9999999999);
+            settype($cuenta, "string");
+            $cuenta_bancaria = "$entidad_financiera$codigo_oficina$control$cuenta";
 
-        $records = $conexion->prepare('SELECT id_cliente FROM cliente WHERE usuario = :usuario');
-        $records->bindParam(':usuario', $_POST['usuario']);
-        $records->execute();
-        $results = $records->fetch(PDO::FETCH_ASSOC);
-        echo $results['id_cliente'];
-        $numeroCuenta = $results['id_cliente'];
-        $clabe = $results['id_cliente'];
-        $idCliente = $results['id_cliente'];
-        $stmtDos->bindParam(':id_numero_cuenta', $numeroCuenta);
-        $stmtDos->bindParam(':id_cliente', $idCliente);
-        $stmtDos->bindParam(':clabe', $clabe);
+            /* clabe interbancaria(19): entidad_bancaria, codigo_ciudad, cuenta2, verificacion 
+           ° 3 entidad bancaria 
+           ° 3 ciudad donde se encuentra la cuenta 
+           ° 11 dígitos número de cuenta 
+           ° 1 número de verificación 
+        */
+            $entidad_bancaria = 139;
+            settype($entidad_bancaria, "string");
+            $codigo_ciudad = 870;
+            settype($codigo_ciudad, "string");
+            $cuenta2 = rand(1000000000, 2147483647);
+            settype($cuenta2, "string");
+            $verificacion = rand(0, 9);
+            settype($verificacion, "string");
+            $clabe = "$entidad_bancaria $codigo_ciudad $cuenta2 $verificacion";
 
-        echo "<script>console.log('Usuario registrado correctamente' );</script>";
 
-        if ($stmtDos->execute()) {
+            $sqlDos = "INSERT INTO cuenta_bancaria (id_numero_cuenta, id_cliente, clabe) VALUES (:id_numero_cuenta, :id_cliente, :clabe)";
+            $stmtDos = $conexion->prepare($sqlDos);
 
-            $sqlTres = "INSERT INTO tarjeta_debito (id_numero_tarjeta_debito, id_numero_cuenta, saldo, fecha_apertura, fecha_expiracion, 
+            $records = $conexion->prepare('SELECT id_cliente FROM cliente WHERE usuario = :usuario');
+            $records->bindParam(':usuario', $_POST['usuario']);
+            $records->execute();
+            $results = $records->fetch(PDO::FETCH_ASSOC);
+            $idCliente = $results['id_cliente'];
+            $stmtDos->bindParam(':id_numero_cuenta', $cuenta_bancaria);
+            $stmtDos->bindParam(':id_cliente', $idCliente);
+            $stmtDos->bindParam(':clabe', $clabe);
+
+            echo "<script>console.log('Usuario registrado correctamente' );</script>";
+
+            if ($stmtDos->execute()) {
+                //TABLA tarjeta_debito: 
+                /* id_numero_tarjeta_debito(19): entidad_bancaria_debito, cuenta2, verificador 
+            ° 6 entidad bancaria que emite la tarjeta y ciudad 
+            ° 11 dígitos número de la tarjeta ($cuenta2)
+            ° 1 dígito verificador 
+        
+        
+         $entidad_bancaria_debito = 128755;
+                settype($entidad_bancaria_debito, "string");
+                $verificador = rand(0, 9);
+                settype($verificador, "string");
+                $numero_tarjeta_debito = "$entidad_bancaria_debito$cuenta2$verificador";
+                /*id_numero_cuenta(10) 
+            $cuenta
+                $num_cuenta = $cuenta;
+                //saldo(5) 
+
+                //fecha_apertura 
+                $fecha_apertura = date("y-m-d");
+                //fecha_expiracion 
+                $saldo = 0;
+                //cvv(4) 
+                $cvv = rand(1000, 9999);
+
+                //nip(4) 
+                $nip = rand(1000, 9999);
+
+                //limite_movimientos(70) 
+                $limite_movimientos = 70;
+
+                //limite_retiros(35)
+                $limite_retiros = 35;
+                $sqlTres = "INSERT INTO tarjeta_debito (id_numero_tarjeta_debito, id_numero_cuenta, saldo, fecha_apertura, fecha_expiracion, 
             cvv, nip, limite_movimientos, limite_retiros) VALUES (:id_numero_tarjeta_debito, :id_numero_cuenta, saldo, :fecha_apertura, :fecha_expiracion, 
             :cvv, :nip, :limite_movimientos, :limite_retiros)";
-            $stmtTres = $conexion->prepare($sqlTres);
+                $stmtTres = $conexion->prepare($sqlTres);
 
-            $recordsDos = $conexion->prepare('SELECT id_numero_cuenta FROM cuenta_bancaria WHERE id_cliente = :id_cliente');
-            $recordsDos->bindParam(':id_cliente',  $results['id_cliente']);
-            $recordsDos->execute();
-            $resultsDos = $recordsDos->fetch(PDO::FETCH_ASSOC);
-            echo $resultsDos['id_numero_cuenta'];
-            $resultsDos->bindParam(':id_numero_tarjeta_debito', $resultsDos['id_cliente']);
-            $resultsDos->bindParam(':id_numero_cuenta', $resultsDos['id_cliente']);
-            $resultsDos->bindParam(':saldo', $resultsDos['id_cliente']);
-            $resultsDos->bindParam(':fecha_apertura', $resultsDos['id_cliente']);
-            $resultsDos->bindParam(':fecha_expiracion', $resultsDos['id_cliente']);
-            $resultsDos->bindParam(':cvv', $resultsDos['id_cliente']);
-            $resultsDos->bindParam(':nip', $resultsDos['id_cliente']);
-            $resultsDos->bindParam(':limite_movimientos', $resultsDos['id_cliente']);
-            $resultsDos->bindParam(':limite_retiros', $resultsDos['id_cliente']);
-            echo "<script>console.log('Cuenta creada con éxito' );</script>";
+                $records = $conexion->prepare('SELECT id_numero_cuenta FROM cuenta_bancaria WHERE id_cliente = :id_cliente');
+                $records->bindParam(':id_cliente',  $idCliente);
+                $records->execute();
+                $results = $records->fetch(PDO::FETCH_ASSOC);
+                echo $idCliente;
+                echo $results['id_numero_cuenta'];
+                $stmtTres->bindParam(':id_numero_tarjeta_debito', $numero_tarjeta_debito);
+                $stmtTres->bindParam(':id_numero_cuenta', $results['id_numero_cuenta']);
+                $stmtTres->bindParam(':saldo', $saldo);
+                $stmtTres->bindParam(':fecha_apertura', $fecha_apertura);
+                $stmtTres->bindParam(':fecha_expiracion', $fecha_apertura);
+                $stmtTres->bindParam(':cvv', $cvv);
+                $stmtTres->bindParam(':nip', $nip);
+                $stmtTres->bindParam(':limite_movimientos', $limite_movimientos);
+                $stmtTres->bindParam(':limite_retiros', $limite_retiros);*/
+                echo "<script>console.log('Cuenta creada con éxito' );</script>";
+                header("location: iniciarSesion.php");
 
-            if ($stmtTres->execute()) {
-                echo "<script>console.log('Tarjeta de débito asignada con éxito' );</script>";
+                if ($stmtTres->execute()) {
+                    echo "<script>console.log('Tarjeta de débito asignada con éxito' );</script>";
+                } else {
+                    echo "<script>console.log('Ha ocurrido un error en la asignación de la tarjeta' );</script>";
+                }
             } else {
-                echo "<script>console.log('Ha ocurrido un error en la asignación de la tarjeta' );</script>";
+                echo "<script>console.log('Ha ocurrido un error al crear la cuenta' );</script>";
             }
         } else {
-            echo "<script>console.log('Ha ocurrido un error al crear la cuenta' );</script>";
+            echo "<script>console.log('Ha ocurrido un error en el registro' );</script>";
         }
-    } else {
-        echo "<script>console.log('Ha ocurrido un error en el registro' );</script>";
-    }
     } else {
         echo "<script>alert('Usuario ya existente' );</script>";
     }
-    
 }
 ?>
 <!DOCTYPE html>
@@ -260,7 +322,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input required type="password" name="pass" class="input" autocomplete="new-password" minlength="8" maxlength=15 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required>
+                    <input id="contrasena" required type="password" name="pass" class="input" autocomplete="new-password" minlength="8" maxlength=15 title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required>
                 </div>
             </div>
             <div class="input-div pass">
@@ -269,7 +331,7 @@ if (
                 </div>
                 <div class="div">
                     <h5>Confirmar contraseña</h5>
-                    <input required type="password" name="pass_dos" class="input" autocomplete="new-password" minlength="8" maxlength=15 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Considere al menos una letra y debe contener al menos un dígito (de 8 a 15 caracteres)" required>
+                    <input id="contrasenaConfirm" oninput="confirmar();" required type="password" name="pass_dos" class="input" autocomplete="new-password" minlength="8" maxlength=15 title="Asegurese de ingresar la misma contraseña." required>
                 </div>
             </div>
             <div class="input-div one arribaDiv">
@@ -290,7 +352,7 @@ if (
             </div>
             <button class="borrar" type="button" id="btnLimpiar">Borrar</button>
             <div class="caja">
-                <label><input required type="checkbox" name="cbox12"> Acepto términos y condiciones</label>
+                <label><input required type="checkbox" id="check" name="cbox12" disable="true"> Acepto términos y condiciones</label>
             </div>
             <input type="hidden" id="firmaImagen" name="firma">
             <input required type="submit" id="btnDescargar" class="btn" onclick="generarImagen()">

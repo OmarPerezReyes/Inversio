@@ -34,3 +34,15 @@ function maxlengthNumber(obj) {
         obj.value = obj.value.slice(0, obj.maxLength);
     }
 }
+
+function confirmar() {
+    var pass = document.getElementById("contrasena");
+    var pass2 = document.getElementById("contrasenaConfirm");
+    var check = document.getElementById("check");
+
+    if (pass2.value != pass.value) {
+        check.disabled = true;
+    } else {
+        check.disabled = false;
+    }
+}

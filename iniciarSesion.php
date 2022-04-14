@@ -1,11 +1,8 @@
 <?php
 session_start();
-
-session_unset();
-
-session_destroy();
   if (isset($_SESSION['user_id'])) {
-    header('Location: /menuPrincipal.html');
+    session_destroy();
+    header('Location: index.html');
   }
 
   require 'controllers/database.php';
@@ -18,9 +15,14 @@ session_destroy();
         $message = '';
     if (count($results) > 0 && password_verify($_POST['pass'], $results['pass'])) {
       $_SESSION['user_id'] = $results['id_cliente'];
-      header("Location: menuPrincipal.html");
+      session_start();
+      header("Location: menuPrincipal.php");
     } else {
-      $message = 'Sorry, those credentials do not match';
+        echo '
+        <script>
+            alert("Contraseña o usuario incorrecto favor de verificar y voler a intentar.");
+        </script>
+        ';
     }
   }
 ?>

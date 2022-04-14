@@ -3,19 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-04-2022 a las 16:34:38
+-- Tiempo de generación: 14-04-2022 a las 17:25:33
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `inversio`
@@ -43,6 +37,13 @@ CREATE TABLE `cliente` (
   `firma` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id_cliente`, `usuario`, `nombre`, `apellido_paterno`, `apellido_materno`, `correo`, `pass`, `telefono_celular`, `fecha_nacimiento`, `curp`, `identificacion_oficial`, `foto_perfil`, `firma`) VALUES
+(1, 'MariaOrtiz', 'María Raquel', 'Ortíz', 'Álvarez', 'mraquelo@upv.edu.mx', '$2y$10$S1h.MyWa7T/wbLOwSt7ccOuS6s5j2PsmDqaAoTgNhywW.l0OJjBsi', 2147483647, '2000-10-10', 'PERO030803HTSRYMA1', 'assets/files/MariaOrtiz_identificacionOficial.pdf', '', 'assets/files/MariaOrtiz_firma.png');
+
 -- --------------------------------------------------------
 
 --
@@ -50,11 +51,17 @@ CREATE TABLE `cliente` (
 --
 
 CREATE TABLE `cuenta_bancaria` (
-  `id_numero_cuenta` int(10) NOT NULL,
+  `id_numero_cuenta` varchar(20) NOT NULL,
   `id_cliente` int(11) NOT NULL,
-  `clabe` varchar(19) NOT NULL,
-  `id_numero_tarjeta_debito` int(19) NOT NULL
+  `clabe` varchar(19) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `cuenta_bancaria`
+--
+
+INSERT INTO `cuenta_bancaria` (`id_numero_cuenta`, `id_cliente`, `clabe`) VALUES
+('14271039363085250668', 1, '139 870 1467858854 ');
 
 -- --------------------------------------------------------
 
@@ -64,7 +71,7 @@ CREATE TABLE `cuenta_bancaria` (
 
 CREATE TABLE `egresos` (
   `id_egresos` int(5) NOT NULL,
-  `id_numero_tarjeta_debito` int(19) NOT NULL,
+  `id_numero_tarjeta_debito` varchar(19) NOT NULL,
   `concepto` varchar(20) NOT NULL,
   `monto` int(5) NOT NULL,
   `fecha_movimiento` date NOT NULL,
@@ -81,7 +88,7 @@ CREATE TABLE `egresos` (
 
 CREATE TABLE `estado_cuenta` (
   `id_estado_cuenta` int(10) NOT NULL,
-  `id_numero_cuenta` int(10) NOT NULL,
+  `id_numero_cuenta` varchar(20) NOT NULL,
   `mes` varchar(10) NOT NULL,
   `saldo_inicial` int(5) NOT NULL,
   `saldo_final` int(5) NOT NULL,
@@ -97,7 +104,7 @@ CREATE TABLE `estado_cuenta` (
 
 CREATE TABLE `ingresos` (
   `id_ingresos` int(5) NOT NULL,
-  `id_numero_tarjeta_debito` int(19) NOT NULL,
+  `id_numero_tarjeta_debito` varchar(19) NOT NULL,
   `concepto` varchar(20) NOT NULL,
   `monto` int(5) NOT NULL,
   `fecha_movimiento` date NOT NULL,
@@ -112,8 +119,8 @@ CREATE TABLE `ingresos` (
 --
 
 CREATE TABLE `tarjeta_debito` (
-  `id_numero_tarjeta_debito` int(19) NOT NULL,
-  `id_numero_cuenta` int(10) NOT NULL,
+  `id_numero_tarjeta_debito` varchar(19) NOT NULL,
+  `id_numero_cuenta` varchar(20) NOT NULL,
   `saldo` int(5) NOT NULL,
   `fecha_apertura` date NOT NULL,
   `fecha_expiracion` date NOT NULL,
@@ -122,10 +129,6 @@ CREATE TABLE `tarjeta_debito` (
   `limite_movimientos` int(70) NOT NULL,
   `limite_retiros` int(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Índices para tablas volcadas
---
 
 --
 -- Indices de la tabla `cliente`
@@ -138,7 +141,6 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `cuenta_bancaria`
   ADD PRIMARY KEY (`id_numero_cuenta`),
-  ADD KEY `id_numero_tarjeta_debito` (`id_numero_tarjeta_debito`),
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
@@ -177,7 +179,7 @@ ALTER TABLE `tarjeta_debito`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `egresos`
@@ -197,16 +199,12 @@ ALTER TABLE `estado_cuenta`
 ALTER TABLE `ingresos`
   MODIFY `id_ingresos` int(5) NOT NULL AUTO_INCREMENT;
 
---
--- Restricciones para tablas volcadas
---
 
 --
 -- Filtros para la tabla `cuenta_bancaria`
 --
 ALTER TABLE `cuenta_bancaria`
-  ADD CONSTRAINT `cuenta_bancaria_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `cuenta_bancaria_ibfk_2` FOREIGN KEY (`id_numero_tarjeta_debito`) REFERENCES `tarjeta_debito` (`id_numero_tarjeta_debito`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `cuenta_bancaria_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `egresos`
@@ -230,9 +228,5 @@ ALTER TABLE `ingresos`
 -- Filtros para la tabla `tarjeta_debito`
 --
 ALTER TABLE `tarjeta_debito`
-  ADD CONSTRAINT `tarjeta_debito_ibfk_1` FOREIGN KEY (`id_numero_cuenta`) REFERENCES `cuenta_bancaria` (`id_numero_cuenta`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tarjeta_debito_ibfk_1` FOREIGN KEY (`id_numero_cuenta`) REFERENCES `cuenta_bancaria` (`id_numero_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,3 +1,10 @@
+<?php
+session_start();
+  if (!isset($_SESSION['user_id'])) {
+    session_destroy();
+    header('Location: index.html');
+  }
+?> 
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,13 +26,13 @@
         <div class="icon__menu">
             <i class="icon-menu" id="btn_open"></i>
         </div>
-        <a href="menuPrincipal.html">
+        <a href="menuPrincipal.php">
             <div class="logoP">
                 <img src="assets/img/logoPrincipalBlanco.png" />
             </div>
         </a>
         <div class="support">
-            <a href="soporte.html"> <img src="assets/img/soporteTecnico.png"></img>
+            <a href="soporte.php"> <img src="assets/img/soporteTecnico.png"></img>
             </a>
         </div>
         <a href="iniciarSesion.php">
@@ -39,41 +46,41 @@
     <div class="menu__side" id="menu_side">
 
         <div class="name__page">
-            <a href="miPerfil.html"><img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" /></a>
+            <a href="miPerfil.php"><img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" /></a>
             <h4>Usuario</h4>
         </div>
 
         <div class="options__menu">
 
-            <a href="menuPrincipal.html" class="selected">
+            <a href="menuPrincipal.php" class="selected">
                 <div class="option">
                     <i class="icon-home" title="Inicio"></i>
                     <h4>Inicio</h4>
                 </div>
             </a>
 
-            <a href="miPerfil.html">
+            <a href="miPerfil.php">
                 <div class="option">
                     <i class="icon-user-circle" title="Mi Perfil"></i>
                     <h4>Mi Perfil</h4>
                 </div>
             </a>
 
-            <a href="transferir.html">
+            <a href="transferir.php">
                 <div class="option">
                     <i class="icon-credit-card" title="Transferir"></i>
                     <h4>Transferir</h4>
                 </div>
             </a>
 
-            <a href="pagarServicio.html">
+            <a href="pagarServicio.php">
                 <div class="option">
                     <i class="icon-doc" title="Pagar servicio"></i>
                     <h4>Pagar servicio</h4>
                 </div>
             </a>
 
-            <a href="suActividad.html">
+            <a href="suActividad.php">
                 <div class="option">
                     <i class="icon-chart-line-1" title="Su actividad"></i>
                     <h4>Su actividad</h4>
@@ -95,7 +102,7 @@
 
                 </div>
                 <p>Detalles de cuenta:</p>
-                <input type="submit" value="Estado de cuenta" class="btnEstadoC">
+                <a href="estadoCuenta.php"><input type="submit" value="Descargar estado de cuenta" class="btnEstadoC"></a>
                 <div class="boton_personalizado">
                     <input type="submit" value="Ingresar Dinero" class="btnMenu">
                     <input type="submit" value="Retirar Dinero" class="btnMenu">
