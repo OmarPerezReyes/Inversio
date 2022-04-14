@@ -236,7 +236,7 @@ a:hover {
         justify-content: center;
     }
     #logoPrincipal {
-        display:flex;
+        display: inline;
         width: 12em;
     }
     #inversioLogo {
@@ -245,6 +245,6 @@ a:hover {
         margin: 1em 1em 1em 2em;
         color: white;
         display: inline-block;
-        margin-left: 50%;
+        margin-left: 18%;
     }
 }
