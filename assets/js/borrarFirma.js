@@ -3,7 +3,8 @@ const $canvas = document.querySelector("#signature-canvas"),
 const contexto = $canvas.getContext("2d");
 
 const limpiarCanvas = () => {
-    contexto.clearRect(0, 0, $canvas.width, $canvas.height);
+    contexto.fillStyle = "white";
+    contexto.fillRect(0, 0, $canvas.width, $canvas.height);
 };
 limpiarCanvas();
 $btnLimpiar.onclick = limpiarCanvas;

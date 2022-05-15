@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,20 +11,19 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
-   
-  }
+}
 
-body{
+body {
     margin-left: 80px;
     margin-top: 80px;
     transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-main{
+main {
     padding: 20px;
 }
 
-header{
+header {
     width: 100%;
     height: 80px;
     background: #164773;
@@ -35,28 +33,32 @@ header{
     top: 0;
     z-index: 200;
 }
-header p{
+
+header p {
     margin-left: 490px;
     font-size: 18px;
-    color:#fff;
+    color: #fff;
 }
-header a{
+
+header a {
     position: relative;
     left: 480px;
     cursor: pointer;
 }
-.logoP img{
+
+.logoP img {
     width: 200px;
     height: 50px;
 }
-.icon__menu h1{
+
+.icon__menu h1 {
     text-align: center;
     font-size: 50px;
     left: 1100%;
     position: absolute;
 }
 
-.icon__menu{
+.icon__menu {
     width: 50px;
     height: 100%;
     display: flex;
@@ -66,14 +68,14 @@ header a{
     color: #fff;
 }
 
-.icon__menu i{
+.icon__menu i {
     margin-left: 20px;
     font-size: 20px;
     cursor: pointer;
     position: absolute;
 }
 
-.menu__side{
+.menu__side {
     width: 80px;
     height: 100%;
     background: rgba(60, 60, 60);
@@ -89,18 +91,22 @@ header a{
     transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
+
 /*Ocultar scroll para chrome, safari y opera*/
-.menu__side::-webkit-scrollbar{
+
+.menu__side::-webkit-scrollbar {
     display: none;
 }
 
+
 /*Ocultar scroll para IE, Edge y Firefox*/
-.menu__side{
+
+.menu__side {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-.support{
+.support {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -109,23 +115,27 @@ header a{
     justify-content: flex-end;
     cursor: pointer;
 }
-.support img{
+
+.support img {
     color: #fff;
     width: 50px;
     height: 40px;
     margin-left: 20%;
 }
-.cerrar_sesion{
-    margin:0 20px 0 20px;
+
+.cerrar_sesion {
+    margin: 0 20px 0 20px;
     cursor: pointer;
     transform: translateX(15px);
 }
-.cerrar_sesion img{
+
+.cerrar_sesion img {
     margin-left: 20px;
     width: 40px;
     height: 40px;
 }
-.name__page{
+
+.name__page {
     padding: 20px 30px;
     display: flex;
     align-items: center;
@@ -133,22 +143,23 @@ header a{
     justify-content: space-between;
 }
 
-.name__page h4{
+.name__page h4 {
     margin-right: 30px;
 }
-.name__page i{
+
+.name__page i {
     width: 20px;
     margin-right: 20px;
 }
 
-.options__menu{
+.options__menu {
     padding: 20px 30px;
     position: absolute;
     top: 80px;
     cursor: pointer;
 }
 
-.options__menu a{
+.options__menu a {
     color: #ffffffb2;
     cursor: default;
     display: block;
@@ -156,33 +167,33 @@ header a{
     transition: color 300ms;
 }
 
-.options__menu a:hover{
+.options__menu a:hover {
     color: white;
 }
 
-.options__menu .option{
+.options__menu .option {
     padding: 20px 0px;
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.options__menu .option i{
+.options__menu .option i {
     width: 20px;
     margin-right: 20px;
     cursor: pointer;
 }
 
-.options__menu .option h4{
+.options__menu .option h4 {
     font-weight: 300;
     cursor: pointer;
 }
 
-a.selected{
+a.selected {
     color: #fff;
 }
 
-.selected:before{
+.selected:before {
     content: '';
     width: 3px;
     height: 80%;
@@ -192,7 +203,9 @@ a.selected{
     left: -30px;
 }
 
+
 /*Clases para usar en JavaScript*/
+
 .marca h1 {
     font-size: 3rem;
     text-transform: uppercase;
@@ -203,11 +216,11 @@ a.selected{
     color: #3B8C6E;
 }
 
-.body_move{
+.body_move {
     margin-left: 250px;
 }
 
-.menu__side_move{
+.menu__side_move {
     width: 250px;
 }
 
@@ -219,8 +232,8 @@ a.selected{
 .social {
     display: flex;
     justify-content: center;
-    
 }
+
 .social a {
     width: 35px;
     height: 35px;
@@ -234,6 +247,7 @@ a.selected{
     text-decoration: none;
     font-size: 20px;
 }
+
 .social a:hover {
     transform: scale(1.3);
     transition: .3s;
@@ -245,10 +259,12 @@ a.selected{
     bottom: 35px;
     font-size: 14px;
 }
+
 .linksPie {
     color: white;
     display: inline-block;
-    font-size: 15px;  /*Mueve el aviso legal------*/
+    font-size: 15px;
+    /*Mueve el aviso legal------*/
     margin-right: 5px;
     margin-bottom: 15px;
 }
@@ -273,10 +289,10 @@ a.selected{
     margin-bottom: 10px;
     text-align: center;
 }
+
 #footer h1 {
     font-size: 20px;
 }
-
 
 #footer .social-icon {
     display: flex;
@@ -303,9 +319,14 @@ a.selected{
     font-size: 15px;
     text-align: center;
 }
- /*--------------*/
+
+
+/*--------------*/
+
+
 /*Menu principal*/
-.Contenedores{
+
+.Contenedores {
     width: 1000px;
     height: 500px;
     margin: auto;
@@ -314,14 +335,19 @@ a.selected{
     gap: 20px;
     grid-template-rows: repeat(2, auto);
 }
-.Contenedores div{
-    padding: 5px;
-    
+
+.Contenedores div {
+    /*padding: 5px;*/
 }
-.tuActividad{
+
+.tuActividad {
     grid-row: span 2;
 }
-.dineroDisponible, .tarjetas, .tuActividad, .retiro{
+
+.dineroDisponible,
+.tarjetas,
+.tuActividad,
+.retiro {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -330,19 +356,24 @@ a.selected{
     border-radius: 5px;
     border: solid 1px #000;
 }
-.dineroDisponible, .tarjetas{
+
+.dineroDisponible,
+.tarjetas {
     height: 240px;
 }
-.content-tarjeta img{
+
+.content-tarjeta img {
     width: 350px;
     height: 90%;
 }
-.dinero{
+
+.dinero {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.btnMenu{
+
+.btnMenu {
     width: 55%;
     margin: auto;
     margin-top: 10px;
@@ -351,9 +382,10 @@ a.selected{
     background-color: #6A747D;
     border: none;
     outline: none;
-    cursor: pointer; 
+    cursor: pointer;
 }
-.btnEstadoC{
+
+.btnEstadoC {
     width: 40%;
     margin: auto;
     margin-top: 10px;
@@ -366,23 +398,28 @@ a.selected{
     margin-top: 30px;
     border-radius: 5px;
     display: flex;
-    justify-content:center;
+    justify-content: center;
 }
-.btnEstadoC:hover{
+
+.btnEstadoC:hover {
     background-color: #7F7F7F;
 }
-.btnMenu:hover{
+
+.btnMenu:hover {
     background-color: #7F7F7F;
 }
+
 #clickme {
     cursor: pointer
 }
-.dineroVer{
-    background-color:transparent;
+
+.dineroVer {
+    background-color: transparent;
     border: transparent;
     font-size: 20px;
 }
-.btnFlecha{
+
+.btnFlecha {
     font-size: 30px;
     display: flex;
     position: absolute;
@@ -398,11 +435,15 @@ a.selected{
     color: #fff;
     background-color: #6A747D;
 }
-.btnFlecha:hover{
+
+.btnFlecha:hover {
     background-color: #7F7F7F;
 }
+
+
 /*Retiro*/
-.retiro1{
+
+.retiro1 {
     width: 60%;
     margin: auto;
     height: 100%;
@@ -412,32 +453,40 @@ a.selected{
     gap: 70px;
     grid-template-columns: 1fr 1fr;
 }
-.transferir{
+
+.transferir {
     width: 80%;
     margin: auto;
     height: 100%;
     margin-bottom: 50px;
     margin-left: 290px;
 }
-.retiroSinTarjeta p, .retiroConTarjeta p{
+
+.retiroSinTarjeta p,
+.retiroConTarjeta p {
     padding: 5px 0 5px 0;
 }
-.ingreso, .concepto{
+
+.ingreso,
+.concepto {
     outline: 0;
     border: none;
 }
-.ingreso{
-   border-bottom: 1px solid #000;
-   background-color: #b6bcc0;
-   width: 100%;
+
+.ingreso {
+    border-bottom: 1px solid #000;
+    background-color: #b6bcc0;
+    width: 100%;
 }
-.concepto{
+
+.concepto {
     border-radius: 6px;
     position: relative;
     margin: 0 0 25px 0;
     height: 50px;
 }
-.btnContinuarRetiro{
+
+.btnContinuarRetiro {
     width: 35%;
     margin: auto;
     margin-top: 10px;
@@ -445,9 +494,11 @@ a.selected{
     color: #fff;
     background-color: #6A747D;
     border: none;
-    outline: none;  
+    outline: none;
 }
-.retiroConTarjeta form, .retiroSinTarjeta form{
+
+.retiroConTarjeta form,
+.retiroSinTarjeta form {
     background-color: #b6bcc0;
     padding: 15px;
     height: 100%;
@@ -457,33 +508,40 @@ a.selected{
     border-radius: 5px;
     border: solid 1px #000;
 }
-.retiroConTarjeta form h3, .retiroSinTarjeta form h3{
+
+.retiroConTarjeta form h3,
+.retiroSinTarjeta form h3 {
     text-align: center;
     margin-bottom: 15px;
 }
-.importe_cuenta{
+
+.importe_cuenta {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.importe_cuenta p{
+
+.importe_cuenta p {
     margin-right: 5px;
     font-size: 20px;
 }
 
-.boton_personalizado{
+.boton_personalizado {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.boton_personalizado a{
+
+.boton_personalizado a {
     text-align: center;
     color: #fff;
 }
 
+
 /* Pagina mi perfil */
-.miperfil{
+
+.miperfil {
     display: grid;
     width: 40%;
     grid-template-columns: 100%;
@@ -493,13 +551,15 @@ a.selected{
     height: 50%;
     gap: 20px;
 }
-.persona{
+
+.persona {
     box-shadow: 0 0px #908F8F, 0 0 5px #908F8F, 0 0 10px #908F8F;
     border-radius: 5px;
     background-color: #b6bcc0;
     border: solid 1px #000;
 }
-.datos{
+
+.datos {
     box-shadow: 0 0px #908F8F, 0 0 5px #908F8F, 0 0 10px #908F8F;
     border-radius: 5px;
     background-color: #b6bcc0;
@@ -508,7 +568,8 @@ a.selected{
     flex-direction: column;
     height: 101%;
 }
-.dato{
+
+.dato {
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -516,31 +577,38 @@ a.selected{
     margin: 5px;
     padding: 10px;
 }
-.icono-perfi{
+
+.icono-perfi {
     display: flex;
     justify-content: left;
 }
-.icono-perfi h1{
+
+.icono-perfi h1 {
     margin-top: 15px;
     margin-left: 30px;
 }
-.icono-perfi img{
+
+.icono-perfi img {
     margin-top: 10px;
     margin-left: 15px;
     width: 50px;
     height: 50px;
 }
-.dato .icono-dato{
+
+.dato .icono-dato {
     margin-right: 5px;
     border: solid 1px #b6bcc0;
 }
-.icono-dato img{
+
+.icono-dato img {
     width: 50px;
     height: 50px;
 }
 
+
 /* SOPORTE */
-.sup{
+
+.sup {
     display: grid;
     width: 40%;
     grid-template-columns: 100%;
@@ -550,40 +618,46 @@ a.selected{
     height: 50%;
     gap: 20px;
 }
-.buscar1{
-    margin-top:-25px;
+
+.buscar1 {
+    margin-top: -25px;
     box-shadow: 0 0px #908F8F, 0 0 5px #908F8F, 0 0 10px #908F8F;
     border-radius: 5px;
     background-color: #b6bcc0;
     border: solid 1px #000;
 }
-.informacion2{
+
+.informacion2 {
     margin-left: 20px;
 }
+
 #search-box {
     position: relative;
     width: 100%;
     margin: 0;
 }
+
 #search-form {
     height: 32px;
     border: 1px solid transparent;
     background-color: #fff;
     overflow: hidden;
 }
+
 #search-text {
     font-size: 14px;
     color: #ddd;
     border-width: 0;
     background: transparent;
 }
-    
+
 #search-box input[type="text"] {
     width: 90%;
     padding: 8px 0 12px 1em;
     color: #333;
     outline: none;
 }
+
 #search-button {
     position: absolute;
     top: 0;
@@ -598,13 +672,15 @@ a.selected{
     background-color: #6A747D;
     cursor: pointer;
 }
-.buscar2{
+
+.buscar2 {
     box-shadow: 0 0px #908F8F, 0 0 5px #908F8F, 0 0 10px #908F8F;
     border-radius: 5px;
     background-color: #b6bcc0;
     border: solid 1px #000;
 }
-.infSup{
+
+.infSup {
     box-shadow: 0 0px #908F8F, 0 0 5px #908F8F, 0 0 10px #908F8F;
     border-radius: 5px;
     background-color: #b6bcc0;
@@ -613,10 +689,12 @@ a.selected{
     flex-direction: column;
     height: 101%;
 }
-.busqueda1 form{
+
+.busqueda1 form {
     width: 100%;
 }
-.dato3{
+
+.dato3 {
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -624,33 +702,38 @@ a.selected{
     margin: 5px;
     padding: 10px;
 }
-.icono-perfi{
+
+.icono-perfi {
     display: flex;
     justify-content: left;
 }
-.icono-perfi h1{
+
+.icono-perfi h1 {
     margin-top: 15px;
     margin-left: 30px;
 }
-.icono-perfi img{
+
+.icono-perfi img {
     margin-top: 10px;
     margin-left: 15px;
     width: 50px;
     height: 50px;
 }
-.dato .icono-dato{
+
+.dato .icono-dato {
     margin-right: 5px;
     border: solid 1px #b6bcc0;
 }
-.icono-dato img{
+
+.icono-dato img {
     width: 50px;
     height: 50px;
 }
 
 
-
 /* Pagina pagar servicio */
-.pagarServicio{
+
+.pagarServicio {
     border: solid 1px white;
     width: 40%;
     margin: 50px auto;
@@ -659,14 +742,16 @@ a.selected{
     grid-template-rows: 100px 100px 100px;
     gap: 20px;
 }
-.item-servicio{
+
+.item-servicio {
     box-shadow: 0 0px #908F8F, 0 0 5px #908F8F, 0 0 10px #908F8F;
     border-radius: 5px;
     border: solid 1px #000;
     background-color: #b6bcc0;
     display: flex;
 }
-.dato2{
+
+.dato2 {
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -675,17 +760,21 @@ a.selected{
     padding: 10px;
     width: 470px;
 }
-.icono-dato2 img{
+
+.icono-dato2 img {
     width: 50px;
     height: 50px;
 }
-.dato2 .icono-dato2{
+
+.dato2 .icono-dato2 {
     margin-right: 5px;
     border: solid 1px #b6bcc0;
 }
 
+
 /* Página su actividad */
-.actividad-page{
+
+.actividad-page {
     width: 37%;
     margin: auto;
     height: 100%;
@@ -694,15 +783,18 @@ a.selected{
     display: flex;
     flex-direction: column;
 }
-.actividad-page hr{
+
+.actividad-page hr {
     background-color: rgb(167, 159, 159);
     width: 85%;
     align-self: center;
 }
-.actividad-page > p{
+
+.actividad-page>p {
     margin: 10px 50px;
 }
-.actividades{
+
+.actividades {
     border-bottom: solid 1px rgb(167, 159, 159);
     margin: 5px 0;
     width: 100%;
@@ -711,26 +803,30 @@ a.selected{
     padding: 5px 45px;
     height: 100px;
 }
-.icono{
+
+.icono {
     border: solid 1px #000;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.icono1{
+
+.icono1 {
     border: solid 1px #000;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.descripcion_cant_fecha{
+
+.descripcion_cant_fecha {
     border: solid 1px #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 5px;
 }
-.descripcion_cant_fecha1{
+
+.descripcion_cant_fecha1 {
     border: solid 1px #000;
     display: flex;
     flex-direction: column;
@@ -738,110 +834,117 @@ a.selected{
     padding: 5px;
     width: 350px;
 }
-.descip_cant{
+
+.descip_cant {
     /* border: solid 1px #000; */
     display: flex;
     justify-content: space-between;
 }
-.fecha{
+
+.fecha {
     /* border: solid 1px #000; */
     text-align: end;
 }
-@media screen and (max-width: 760px){
-    .body_move{
+
+@media screen and (max-width: 760px) {
+    .body_move {
         margin-left: 0px;
     }
-    .menu__side_move{
+    .menu__side_move {
         width: 80px;
         left: -80px;
     }
-    .Contenedores div{
+    .Contenedores div {
         grid-column: span 2;
     }
-    .Contenedores{
+    .Contenedores {
         width: 100%;
         height: 500px;
     }
-    header a{
+    header a {
         left: 90px;
     }
-    .retiro1{
+    .retiro1 {
         width: 100%;
     }
-    .retiroSinTarjeta, .retiroConTarjeta{
+    .retiroSinTarjeta,
+    .retiroConTarjeta {
         grid-column: span 2;
     }
-    .miperfil, .pagarServicio{
+    .miperfil,
+    .pagarServicio {
         width: 100%;
     }
-    .actividad-page{
+    .actividad-page {
         width: 100%;
     }
-    .transferir{
+    .transferir {
         width: 90%;
         margin-bottom: 50px;
         margin-left: 20px;
     }
-    .tarjetas{
+    .tarjetas {
         height: 200px;
     }
-    .content-tarjeta img{
-        width:250px;
+    .content-tarjeta img {
+        width: 250px;
         height: 150px;
     }
-    .btnFlecha{
+    .btnFlecha {
         margin-left: 265px;
     }
-    .descripcion_cant_fecha1, .icono1{
+    .descripcion_cant_fecha1,
+    .icono1 {
         width: 330px;
     }
-    .descripcion_cant_fecha1{
+    .descripcion_cant_fecha1 {
         height: 50px;
     }
-    .miperfil{
+    .miperfil {
         height: 50%;
     }
-    .icono-perfi h1{
+    .icono-perfi h1 {
         margin-top: 20px;
         margin-left: 10px;
         font-size: 18px;
     }
-    .btnMenu{
+    .btnMenu {
         width: 72%;
     }
-    .descripcion_cant_fecha1{
+    .descripcion_cant_fecha1 {
         width: 310px;
     }
-    .icono1{
+    .icono1 {
         width: 310px;
     }
-    .sup, .infSup{
+    .sup,
+    .infSup {
         width: 100%;
         height: 100%;
     }
-    .logoP img{
+    .logoP img {
         width: 155px;
         height: 40px;
     }
-    .support{
+    .support {
         margin-left: 10px;
     }
-    .support img{
+    .support img {
         width: 40px;
         height: 30px;
     }
-    .cerrar_sesion img{
+    .cerrar_sesion img {
         margin-left: -10px;
         width: 30px;
         height: 30px;
     }
-    .titulo h1{
+    .titulo h1 {
         font-size: 23px;
     }
-    .Contenedores{
+    .Contenedores {
         height: 650px;
     }
-    .tuActividad{
+    .tuActividad {
         margin-top: -8px;
     }
 }

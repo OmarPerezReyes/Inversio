@@ -115,19 +115,61 @@ session_start();
                     </form>
                 </div>
                 <div class="actividades">
-                    <div class="icono1">
-                        aqui va un icono
+                <div class="icono">
+                    aqui va un icono
+                </div>
+                <div class="descripcion_cant_fecha">
+                    <div class="descip_cant">
+                        <p>Te transfirieron</p>
+                        <p>$500.00</p>
                     </div>
-                    <div class="descripcion_cant_fecha1">
-                        <div class="descip_cant">
-                            <p>Te transfirieron</p>
-                            <p>$500.00</p>
-                        </div>
-                        <div class="fecha">
-                            <p>22 de noviembre</p>
-                        </div>
+                    <div class="fecha">
+                        <p>22 de noviembre</p>
                     </div>
                 </div>
+            </div>
+            <div class="actividades">
+                <div class="icono">
+                    aqui va un icono
+                </div>
+                <div class="descripcion_cant_fecha">
+                    <div class="descip_cant">
+                        <p>Te transfirieron</p>
+                        <p>$500.00</p>
+                    </div>
+                    <div class="fecha">
+                        <p>22 de noviembre</p>
+                    </div>
+                </div>
+            </div>
+            <div class="actividades">
+                <div class="icono">
+                    aqui va un icono
+                </div>
+                <div class="descripcion_cant_fecha">
+                    <div class="descip_cant">
+                        <p>Te transfirieron</p>
+                        <p>$500.00</p>
+                    </div>
+                    <div class="fecha">
+                        <p>22 de noviembre</p>
+                    </div>
+                </div>
+            </div>
+            <div class="actividades">
+                <div class="icono">
+                    aqui va un icono
+                </div>
+                <div class="descripcion_cant_fecha">
+                    <div class="descip_cant">
+                        <p>Te transfirieron</p>
+                        <p>$500.00</p>
+                    </div>
+                    <div class="fecha">
+                        <p>22 de noviembre</p>
+                    </div>
+                </div>
+            </div>
             </div>
             <div class="tarjetas">
                 <p>Mis tarjetas:</p>

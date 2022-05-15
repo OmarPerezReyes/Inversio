@@ -7,7 +7,7 @@ $message = '';
 if (
     !empty($_POST['usuario']) && !empty($_POST['nombre']) && !empty($_POST['apellidoPaterno']) && !empty($_POST['apellidoMaterno'])
     && !empty($_POST['fechaNacimiento']) && !empty($_POST['numeroTelefono']) && !empty($_POST['curp'])
-    && !empty($_POST['correo']) && !empty($_POST['pass'])
+    && !empty($_POST['correo']) && !empty($_POST['pass'] )  && !empty($_POST['firma'] )
 ) {
     $sql = "INSERT INTO cliente (usuario, nombre, apellido_paterno, apellido_materno, fecha_nacimiento,
     telefono_celular, curp, correo, pass, identificacion_oficial, firma) VALUES (:usuario, :nombre, :apellido_paterno, :apellido_materno, :fecha_nacimiento,
@@ -38,7 +38,7 @@ if (
         </script>
         ';
         } else {
-            $permitido = array("application/pdf", 'image/jpg');
+            $permitido = array("application/pdf", 'image/jpeg');
             if (in_array($_FILES['identificacionOficial']['type'], $permitido)) {
                 $ruta = 'assets/files/';
                 opendir($ruta);
@@ -59,9 +59,9 @@ if (
         $stmt->bindParam(':identificacion_oficial', $credencial);
 
         $img = $_POST['firma'];
-        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace('data:image/jpeg;base64,', '', $img);
         $fileData = base64_decode($img);
-        $fileName = $usuario . '_firma.png';
+        $fileName = $usuario . '_firma.jpeg';
 
         $ruta = 'assets/files/';
         opendir($ruta);
@@ -120,7 +120,10 @@ if (
             $stmtDos->bindParam(':id_cliente', $idCliente);
             $stmtDos->bindParam(':clabe', $clabe);
 
-            echo "<script>console.log('Usuario registrado correctamente' );</script>";
+            echo "<script>
+            console.log('Usuario registrado correctamente' );
+            window.location = 'iniciarSesion.php';
+            </script>";
 
             if ($stmtDos->execute()) {
                 //TABLA tarjeta_debito: 
@@ -174,15 +177,16 @@ if (
                 $stmtTres->bindParam(':cvv', $cvv);
                 $stmtTres->bindParam(':nip', $nip);
                 $stmtTres->bindParam(':limite_movimientos', $limite_movimientos);
-                $stmtTres->bindParam(':limite_retiros', $limite_retiros);*/
-                echo "<script>console.log('Cuenta creada con éxito' );</script>";
-                header("location: iniciarSesion.php");
-
-                if ($stmtTres->execute()) {
+                $stmtTres->bindParam(':limite_retiros', $limite_retiros);
+                 if ($stmtTres->execute()) {
                     echo "<script>console.log('Tarjeta de débito asignada con éxito' );</script>";
                 } else {
                     echo "<script>console.log('Ha ocurrido un error en la asignación de la tarjeta' );</script>";
-                }
+                }*/
+                echo "<script>console.log('Cuenta creada con éxito' );</script>";
+                header("location: iniciarSesion.php");
+
+               
             } else {
                 echo "<script>console.log('Ha ocurrido un error al crear la cuenta' );</script>";
             }
@@ -211,16 +215,17 @@ if (
         function generarImagen() {
             const enlace = document.createElement('a');
             // El título
-            enlace.download = "Firma.png";
+            enlace.download = "Firma.jpeg";
             // Convertir la imagen a Base64 y ponerlo en el enlace
-            enlace.href = $canvas.toDataURL();
+            enlace.href = $canvas.toDataURL("image/jpeg", 1);
             // Hacer click en él
             document.getElementById("firmaImagen").value = enlace;
+            enlace.click();
         };
     </script>
 </head>
 
-<body>
+<body onload="limpiarCanvas()">
     <a id="Regresarboton" href="./index.html"><i class="fa fa-chevron-circle-left" style="font-size:48px" id="Regresar"></i></a>
     <a id="inversioLogo" href="index.html"><img src="assets/img/logoPrincipalBlanco.png" id="logoPrincipal"></a>
 
@@ -351,6 +356,7 @@ if (
                 <canvas id="signature-canvas" style="border: 1px black; background-color:white;width: 100%; height: 200px;"></canvas>
             </div>
             <button class="borrar" type="button" id="btnLimpiar">Borrar</button>
+            <!--<button class="borrar" type="button" id="btnDescargar">Descargar</button>-->
             <div class="caja">
                 <label><input required type="checkbox" id="check" name="cbox12" disable="true"> Acepto términos y condiciones</label>
             </div>
@@ -358,6 +364,15 @@ if (
             <input required type="submit" id="btnDescargar" class="btn" onclick="generarImagen()">
         </form>
     </div>
+    <script>
+        const $canvas = document.querySelector("#signature-canvas"),
+const contexto = $canvas.getContext("2d");
+
+const limpiarCanvas = () => {
+    contexto.fillStyle = "white";
+    contexto.fillRect(0, 0, $canvas.width, $canvas.height);
+};
+    </script>
     <script src="assets/js/borrarFirma.js"></script>
     <script src="assets/js/generarImagen.js"></script>
 </body>
